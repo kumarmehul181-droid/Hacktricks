@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Complete Ethical Hacking Roadmap — tool-wise guide from OS basics to pro penetration testing, with Indian legal guidelines. Free learning resource for students.">
+<title>Ethical Hacking Roadmap — Tool-wise Guide (OS to Pro)</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg:#0d1117; --card:#161b22; --border:#21262d; --text:#c9d1d9;
+    --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --yellow:#d29922;
+    --red:#f85149; --purple:#bc8cff; --orange:#ff9f43;
+  }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,Arial,sans-serif; line-height:1.65; }
+  .wrap { max-width:1050px; margin:0 auto; padding:0 20px; }
+
+  /* NAV */
+  nav { position:sticky; top:0; background:rgba(13,17,23,.95); border-bottom:1px solid var(--border); z-index:100; backdrop-filter:blur(6px); }
+  .nav-inner { max-width:1050px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .logo { font-weight:700; color:var(--green); font-size:1.05em; white-space:nowrap; }
+  .nav-links { display:flex; gap:14px; flex-wrap:wrap; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:.85em; }
+  .nav-links a:hover { color:var(--blue); }
+
+  /* HERO */
+  header { padding:55px 0 30px; text-align:center; border-bottom:1px solid var(--border);
+    background:linear-gradient(180deg,#0d1117 0%,#0d1117 60%,#10151d 100%); }
+  h1 { font-size:2.1em; color:#fff; margin-bottom:8px; }
+  h1 .accent { color:var(--green); }
+  .sub { color:var(--muted); max-width:720px; margin:0 auto; }
+  .chips { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
+  .chip { background:var(--card); border:1px solid var(--border); padding:6px 14px; border-radius:99px; font-size:.8em; color:var(--blue); }
+
+  /* SEARCH */
+  .searchbar { max-width:500px; margin:22px auto 0; }
+  .searchbar input { width:100%; padding:11px 16px; border-radius:10px; border:1px solid var(--border);
+    background:var(--card); color:var(--text); font-size:1em; outline:none; }
+  .searchbar input:focus { border-color:var(--blue); }
+
+  /* LEGAL BANNER */
+  .legal { background:#2d1b1b; border:1px solid #f8514955; color:#ffa198; padding:14px 18px;
+    border-radius:10px; margin:25px 0; font-size:.92em; }
+
+  /* SECTIONS */
+  section { padding:40px 0 10px; }
+  h2 { color:var(--green); font-size:1.5em; margin-bottom:6px; display:flex; align-items:center; gap:10px; }
+  h2 .num { background:var(--card); border:1px solid var(--border); color:var(--blue);
+    width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius:8px; font-size:.75em; flex-shrink:0; }
+  .phase-sub { color:var(--muted); margin-bottom:20px; font-size:.95em; }
+  .phase-goal { background:var(--card); border-left:3px solid var(--green); padding:10px 14px;
+    border-radius:0 8px 8px 0; margin-bottom:22px; font-size:.9em; }
+  .phase-goal b { color:var(--green); }
+
+  /* TOOL CARDS */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+  .tool { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color .2s; }
+  .tool:hover { border-color:#30363d; }
+  .tool-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .icon { width:40px; height:40px; border-radius:9px; background:#0d1117; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; flex-shrink:0; }
+  .icon img { position:absolute; inset:0; width:100%; height:100%; padding:8px; object-fit:contain; }
+  .mono { font-weight:800; font-size:.9em; color:var(--blue); letter-spacing:-1px; }
+  .tool-name { font-weight:700; color:#fff; font-size:1em; }
+  .tool-cat { font-size:.72em; color:var(--muted); }
+  .tool p { font-size:.88em; margin:6px 0; }
+  .tool .use { color:var(--muted); font-size:.85em; }
+  .tool .use b { color:var(--yellow); font-weight:600; }
+  pre { background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:10px 12px;
+    overflow-x:auto; font-size:.78em; margin:10px 0; color:#a5d6ff; }
+  .tool a { color:var(--blue); text-decoration:none; font-size:.82em; }
+  .tag { display:inline-block; font-size:.68em; padding:2px 8px; border-radius:99px; margin-left:6px; vertical-align:middle; }
+  .tag.free { background:#12261e; color:var(--green); border:1px solid #2ea04340; }
+  .tag.os { background:#1a2233; color:var(--blue); border:1px solid #58a6ff40; }
+  .tag.paid { background:#2d2410; color:var(--yellow); border:1px solid #d2992240; }
+
+  /* GOV SECTION */
+  .law-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; margin:14px 0; }
+  .law-card h3 { color:var(--orange); margin-bottom:8px; font-size:1.05em; }
+  .law-card li, .law-card p { font-size:.9em; margin:5px 0 5px 20px; }
+  .law-card p { margin-left:0; }
+  .law-card b { color:var(--blue); }
+
+  /* TABLE */
+  table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.88em; }
+  th { background:var(--card); color:var(--green); text-align:left; padding:10px 12px; border:1px solid var(--border); }
+  td { padding:9px 12px; border:1px solid var(--border); }
+  tr:nth-child(even) td { background:#10151d; }
+
+  footer { text-align:center; color:var(--muted); padding:35px 20px; border-top:1px solid var(--border); margin-top:45px; font-size:.85em; }
+  footer a { color:var(--blue); text-decoration:none; }
+  .note { font-size:.78em; color:var(--muted); margin-top:4px; }
+  @media(max-width:600px){ h1{font-size:1.5em;} .nav-links{display:none;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="logo">[ ROOT ] Roadmap</span>
+    <div class="nav-links">
+      <a href="#p0">Phase 0: OS & Lab</a>
+      <a href="#p1">Phase 1: Networking</a>
+      <a href="#p2">Phase 2: Web</a>
+      <a href="#p3">Phase 3: Exploitation</a>
+      <a href="#p4">Phase 4: PrivEsc</a>
+      <a href="#p5">Phase 5: Wireless/Mobile</a>
+      <a href="#p6">Phase 6: Practice & Career</a>
+      <a href="#gov">Gov Guidelines</a>
+      <a href="#certs">Certifications</a>
+      <a href="#plan">12-Week Plan</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1>Ethical Hacking <span class="accent">Roadmap</span> — Tool by Tool</h1>
+    <p class="sub">A complete, free, tool-wise guide for students: from your first Linux terminal to professional penetration testing. Every tool explained with what it does, when to use it, and the exact commands to start.</p>
+    <div class="chips">
+      <span class="chip">7 Phases</span>
+      <span class="chip">40+ Tools</span>
+      <span class="chip">Copy-paste Commands</span>
+      <span class="chip">Indian Legal Guidelines</span>
+      <span class="chip">100% Free Start</span>
+    </div>
+    <div class="searchbar"><input type="text" id="search" placeholder="Search a tool... (nmap, burp, hashcat...)" oninput="filterTools(this.value)"></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="legal">
+  ⚖️ <b>READ FIRST — Legal Boundary:</b> Everything here is for education. Use these skills ONLY on (1) your own lab machines, (2) CTF platforms like TryHackMe/HackTheBox, or (3) programs with written authorization (bug bounty scope, client contract). Testing any system without permission is a criminal offence under India's IT Act 2000 (Sec. 43, 66) — punishable with imprisonment and fine. See the <a href="#gov" style="color:#ffa198">Government Guidelines</a> section below.
+</div>
+
+<!-- ================= PHASE 0 ================= -->
+<section id="p0">
+  <h2><span class="num">P0</span> Phase 0 — OS & Lab Setup <span style="font-size:.5em;color:var(--muted)">(Week 1–3)</span></h2>
+  <p class="phase-sub">Foundation first. A hacker who can't use the terminal and doesn't understand the OS is just a script kiddie.</p>
+  <div class="phase-goal"><b>Goal:</b> Install Kali Linux, get comfortable in the terminal, set up a safe home lab with vulnerable machines.</div>
+  <div class="grid" id="grid0">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">KL</span><img src="https://cdn.simpleicons.org/kalilinux/3fb950" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Kali Linux <span class="tag free">FREE</span></div><div class="tool-cat">Attacking OS — Debian-based</div></div></div>
+      <p>The industry-standard Linux distribution for penetration testing. Comes with 600+ security tools pre-installed. This is your main working OS for the whole roadmap.</p>
+      <p class="use"><b>When:</b> Always. Install it first, learn to live in it.</p>
+      <pre>Download: kali.org/get-kali (VM image recommended)
+Login: kali / kali (change password first!)</pre>
+      <a href="https://www.kali.org" target="_blank">kali.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">VB</span><img src="https://cdn.simpleicons.org/virtualbox/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">VirtualBox <span class="tag free">FREE</span></div><div class="tool-cat">Virtualization — Lab host</div></div></div>
+      <p>Runs Kali + vulnerable target machines safely inside your laptop. If you break a VM, you delete it and make a new one — your real PC is never at risk.</p>
+      <p class="use"><b>When:</b> Day 1. Set network mode to "Host-Only" so lab machines stay isolated from the internet.</p>
+      <pre>Setup: New VM → 2GB+ RAM, 2 CPUs, 20GB disk
+Network: Host-Only Adapter (lab isolation)</pre>
+      <a href="https://www.virtualbox.org" target="_blank">virtualbox.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">VM</span><img src="https://cdn.simpleicons.org/vmware/bc8cff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">VMware Workstation Player <span class="tag free">FREE</span></div><div class="tool-cat">Virtualization — Alternative to VirtualBox</div></div></div>
+      <p>Smoother performance and better USB/WiFi adapter passthrough than VirtualBox. For wireless hacking (Phase 5), VMware handles external adapters more reliably.</p>
+      <p class="use"><b>When:</b> Use either this or VirtualBox — you don't need both.</p>
+      <a href="https://www.vmware.com/products/workstation-player.html" target="_blank">vmware.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">LX</span><img src="https://cdn.simpleicons.org/linux/fcc424" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Linux Terminal <span class="tag free">FREE</span></div><div class="tool-cat">Skill — Non-negotiable</div></div></div>
+      <p>Your bread and butter. Filesystem hierarchy (/etc, /var, /home), permissions (rwx, chmod, chown), users, sudo, processes. Aim to do daily tasks without the mouse.</p>
+      <p class="use"><b>When:</b> Every single day, for the rest of your career.</p>
+      <pre>cd / ls -la / pwd          # move & inspect
+grep -rn "text" /folder   # search inside files
+find / -name "*.conf" 2>/dev/null
+chmod +x script.sh        # make executable
+ps aux | grep ssh         # running processes</pre>
+      <a href="https://linuxjourney.com" target="_blank">Practice free at linuxjourney.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">$H</span></div>
+        <div><div class="tool-name">Bash Scripting <span class="tag free">FREE</span></div><div class="tool-cat">Automation — Shell</div></div></div>
+      <p>Repetitive hacking steps (scanning many IPs, parsing output, quick loops) become one script. Start with variables, if/else, for loops.</p>
+      <p class="use"><b>When:</b> The moment you type the same command 3 times — script it.</p>
+      <pre>#!/bin/bash
+for ip in $(cat targets.txt); do
+  nmap -sV -oN "scan_$ip.txt" "$ip"
+done</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">PY</span><img src="https://cdn.simpleicons.org/python/3fb950" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Python <span class="tag free">FREE</span></div><div class="tool-cat">Scripting — Tool building</div></div></div>
+      <p>The language of security tooling. Build your own port scanner, brute-forcer, or log parser — employers love candidates who can script. Learn: sockets, requests, subprocess, argparse.</p>
+      <p class="use"><b>When:</b> Phase 2 onwards; every pentester's automation edge.</p>
+      <pre>import socket
+s = socket.socket()
+s.settimeout(0.5)
+if s.connect_ex(("10.10.10.5", 80)) == 0:
+    print("Port 80 OPEN")</pre>
+      <a href="https://docs.python.org/3/tutorial/" target="_blank">Official Python tutorial →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">GT</span><img src="https://cdn.simpleicons.org/git/f05032" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Git + GitHub <span class="tag free">FREE</span></div><div class="tool-cat">Version control — Portfolio</div></div></div>
+      <p>Track your notes, scripts and writeups. A GitHub repo of solved machines becomes your living portfolio — recruiters actually check it.</p>
+      <p class="use"><b>When:</b> Commit every writeup and every tool you build.</p>
+      <pre>git init && git add . && git commit -m "added nmap notes"
+git branch -M main && git push -u origin main</pre>
+      <a href="https://git-scm.com/book/en/v2" target="_blank">Free Pro Git book →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">LAB</span></div>
+        <div><div class="tool-name">Vulnerable Lab Machines <span class="tag free">FREE</span></div><div class="tool-cat">Practice targets</div></div></div>
+      <p>Your legal hacking targets: Metasploitable 2 (Linux, ancient services), DVWA (web vulnerabilities), OWASP Juice Shop (modern web app), VulnHub boot2root boxes.</p>
+      <p class="use"><b>When:</b> Set up in week 2, keep adding harder boxes as you grow.</p>
+      <pre>Metasploitable: sourceforge.net/projects/metasploitable
+DVWA: github.com/digininja/DVWA
+Juice Shop: github.com/juice-shop/juice-shop</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 1 ================= -->
+<section id="p1">
+  <h2><span class="num">P1</span> Phase 1 — Networking & Recon <span style="font-size:.5em;color:var(--muted)">(Week 3–8)</span></h2>
+  <p class="phase-sub">"A month of recon saves a year of exploitation." Hacking is mostly understanding how data moves — then finding where it leaks.</p>
+  <div class="phase-goal"><b>Goal:</b> Master Nmap + Wireshark, understand TCP/IP and DNS deeply, learn to map a target (in your lab / authorized scope only).</div>
+  <div class="grid" id="grid1">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">WS</span><img src="https://cdn.simpleicons.org/wireshark/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Wireshark <span class="tag free">FREE</span></div><div class="tool-cat">Traffic analysis — Packet capture</div></div></div>
+      <p>Captures and dissects live network traffic packet by packet. Teaches you what really happens on the wire: handshakes, DNS queries, credentials in plain protocols. The best learning tool in this entire roadmap.</p>
+      <p class="use"><b>When:</b> Learning protocols, analyzing lab captures, investigating "what did that tool actually do?"</p>
+      <pre>Filters: tcp.port == 80 | dns | http.request
+|| (ip.addr == 10.10.10.5)</pre>
+      <a href="https://www.wireshark.org" target="_blank">wireshark.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">NM</span></div>
+        <div><div class="tool-name">Nmap <span class="tag free">FREE</span></div><div class="tool-cat">The #1 recon tool — Port & service scanner</div></div></div>
+      <p>The most used hacking tool in the world. Discovers live hosts, open ports, running services, versions, and even vulnerabilities via NSE scripts. Every pentest starts here.</p>
+      <p class="use"><b>When:</b> First contact with any lab target — always scan before you attack.</p>
+      <pre>nmap -sV -sC 10.10.10.5        # versions + scripts
+nmap -p- 10.10.10.5             # all 65535 ports
+nmap -sU --top-ports 100 10.10.10.5   # UDP
+nmap --script vuln 10.10.10.5    # vuln scripts
+nmap -sV -oN scan.txt 10.10.10.5 # save output</pre>
+      <a href="https://nmap.org/book/man.html" target="_blank">nmap.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">NC</span></div>
+        <div><div class="tool-name">Netcat <span class="tag free">FREE</span></div><div class="tool-cat">Swiss-army knife — TCP/UDP</div></div></div>
+      <p>Reads and writes raw data across network connections. Banner grabbing, simple file transfers, quick listener shells — and it's how reverse shells actually work under the hood.</p>
+      <p class="use"><b>When:</b> Checking a service manually, testing connectivity, catching lab reverse shells.</p>
+      <pre>nc -nv 10.10.10.5 22          # banner grab
+nc -lvnp 4444                 # listener for lab shell</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">DG</span></div>
+        <div><div class="tool-name">dig / whois / dnsenum <span class="tag free">FREE</span></div><div class="tool-cat">DNS & domain recon</div></div></div>
+      <p>DNS tells you a target's infrastructure: mail servers, nameservers, subdomains, TXT records. dig for queries, whois for registration data, dnsenum for subdomain brute-forcing.</p>
+      <p class="use"><b>When:</b> Web-target recon — before touching the website itself.</p>
+      <pre>dig example.com ANY
+dig -x 1.2.3.4                # reverse lookup
+whois example.com
+dnsenum example.com</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">TH</span></div>
+        <div><div class="tool-name">theHarvester <span class="tag free">FREE</span></div><div class="tool-cat">OSINT — Emails & subdomains</div></div></div>
+      <p>Collects public emails, names, subdomains and hosts from search engines and public sources. This is passive recon — no packets touch the target.</p>
+      <p class="use"><b>When:</b> Pre-engagement research and CTF OSINT challenges.</p>
+      <pre>theHarvester -d example.com -b google,bing -l 100</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">GO</span><img src="https://cdn.simpleicons.org/google/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Google Dorking <span class="tag free">FREE</span></div><div class="tool-cat">OSINT — Search operators</div></div></div>
+      <p>Advanced search operators that surface exposed files, login pages, and directories indexed by Google. Also your best free documentation-finder while learning.</p>
+      <p class="use"><b>When:</b> OSINT challenges, and daily — to find docs and examples faster.</p>
+      <pre>site:example.com filetype:pdf
+inurl:admin site:example.com
+"index of" /backup</pre>
+      <a href="https://www.exploit-db.com/google-hacking-database" target="_blank">GHDB — Google Hacking Database →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">SD</span></div>
+        <div><div class="tool-name">Shodan <span class="tag free">FREE tier</span></div><div class="tool-cat">OSINT — Internet-wide device search</div></div></div>
+      <p>A search engine for internet-connected devices: exposed cameras, servers, databases. Understanding it teaches you how exposed the real world is. Search your OWN devices to learn.</p>
+      <p class="use"><b>When:</b> OSINT learning; checking your own authorized infrastructure.</p>
+      <pre>shodan search 'apache country:"IN"'
+# Web: shodan.io (free account)</pre>
+      <a href="https://www.shodan.io" target="_blank">shodan.io →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">RN</span></div>
+        <div><div class="tool-name">Recon-ng <span class="tag free">FREE</span></div><div class="tool-cat">OSINT — Framework</div></div></div>
+      <p>Metasploit-style framework for recon: modules for subdomains, contacts, hosts. Organizes OSINT findings in a database instead of scattered terminal output.</p>
+      <p class="use"><b>When:</b> Bigger recon tasks where manual commands get messy.</p>
+      <pre>recon-ng
+> marketplace install all
+> modules search subdomains</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 2 ================= -->
+<section id="p2">
+  <h2><span class="num">P2</span> Phase 2 — Web Application Hacking <span style="font-size:.5em;color:var(--muted)">(Week 8–20)</span></h2>
+  <p class="phase-sub">Where most bug bounties live. You learn the OWASP Top 10 by breaking them — legally — in DVWA, Juice Shop, and PortSwigger's labs.</p>
+  <div class="phase-goal"><b>Goal:</b> Master Burp Suite, understand each OWASP Top 10 vulnerability, exploit and also FIX each one.</div>
+  <div class="grid" id="grid2">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">BS</span><img src="https://cdn.simpleicons.org/burpsuite/ff9f43" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Burp Suite <span class="tag free">Community</span> <span class="tag paid">Pro</span></div><div class="tool-cat">The web-hacking workbench</div></div></div>
+      <p>Intercepts every request your browser makes so you can inspect and modify it before it reaches the server. Repeater for manual testing, Intruder for automated attacks, Decoder for encodings. The single most important web tool.</p>
+      <p class="use"><b>When:</b> Every web target, every time. Proxy on, browser through it, walk the whole app first.</p>
+      <pre>Setup: Proxy → listen 127.0.0.1:8080
+Browser: FoxyProxy → Burp → install CA cert
+Workflow: Proxy (capture) → Repeater (test) → Intruder (automate)</pre>
+      <a href="https://portswigger.net/burp" target="_blank">portswigger.net →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">ZP</span><img src="https://cdn.simpleicons.org/zap/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">OWASP ZAP <span class="tag free">FREE</span></div><div class="tool-cat">Burp alternative — Open source</div></div></div>
+      <p>The free, open-source proxy from OWASP. Slightly less polished than Burp Pro but fully capable, with an automated scanner that Burp Community lacks. Great on a student budget.</p>
+      <p class="use"><b>When:</b> You want automated scanning without paying for Burp Pro.</p>
+      <a href="https://www.zaproxy.org" target="_blank">zaproxy.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">SQ</span></div>
+        <div><div class="tool-name">sqlmap <span class="tag free">FREE</span></div><div class="tool-cat">SQL injection — Automated</div></div></div>
+      <p>Takes a request you've confirmed is injectable (via Burp) and automates extraction: databases, tables, credentials. Always find the injection manually first — sqlmap is the extractor, not the finder.</p>
+      <p class="use"><b>When:</b> Confirmed SQLi in your lab target. Try manual UNION attacks first to truly understand it.</p>
+      <pre>sqlmap -u "http://10.10.10.5/item.php?id=1" --batch --dbs
+sqlmap -r request.txt --dump -T users   # from Burp request</pre>
+      <a href="https://github.com/sqlmapproject/sqlmap" target="_blank">github →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">NI</span></div>
+        <div><div class="tool-name">Nikto <span class="tag free">FREE</span></div><div class="tool-cat">Web server scanner</div></div></div>
+      <p>Quick first-pass web scanner: finds outdated software, dangerous files, misconfigurations. Noisy and basic — it's a starting checklist, never your only test.</p>
+      <p class="use"><b>When:</b> First 2 minutes against a new lab web server.</p>
+      <pre>nikto -h http://10.10.10.5</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">FF</span></div>
+        <div><div class="tool-name">Gobuster / ffuf / dirsearch <span class="tag free">FREE</span></div><div class="tool-cat">Directory & path brute-forcing</div></div></div>
+      <p>Finds hidden paths and files (/admin, /backup.zip, /api) using wordlists. The technique behind most "information disclosure" findings in CTFs and real reports.</p>
+      <p class="use"><b>When:</b> Every web box. Also learn the wordlist dir: /usr/share/wordlists/.</p>
+      <pre>gobuster dir -u http://10.10.10.5 -w /usr/share/wordlists/dirb/common.txt
+ffuf -u http://10.10.10.5/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">CU</span><img src="https://cdn.simpleicons.org/curl/3fb950" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">curl <span class="tag free">FREE</span></div><div class="tool-cat">Command-line HTTP client</div></div></div>
+      <p>Sends crafted HTTP requests from the terminal without a browser: headers, cookies, POST bodies. Every API test you'll ever do starts with a curl command.</p>
+      <p class="use"><b>When:</b> Quick endpoint checks, API testing, reproducing findings for reports.</p>
+      <pre>curl -i http://10.10.10.5/admin
+curl -X POST -d "user=admin" http://10.10.10.5/login
+curl -H "X-Forwarded-For: 127.0.0.1" http://10.10.10.5/</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">PM</span><img src="https://cdn.simpleicons.org/postman/ff6c37" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Postman <span class="tag free">FREE tier</span></div><div class="tool-cat">API testing workbench</div></div></div>
+      <p>Organized API testing: collections, environments, saved auth tokens. Modern apps expose APIs everywhere, and API bugs (IDOR, broken auth) are top bug bounty categories.</p>
+      <p class="use"><b>When:</b> Any target with an API — web or mobile app backends.</p>
+      <a href="https://www.postman.com" target="_blank">postman.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">OW</span><img src="https://cdn.simpleicons.org/owasp/d29922" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">OWASP Top 10 <span class="tag free">FREE</span></div><div class="tool-cat">Knowledge — Not a tool, a syllabus</div></div></div>
+      <p>Your study plan for this phase: Broken Access Control, Injection, Cryptographic Failures, SSRF, Misconfiguration... Learn each by exploiting it in a lab AND by writing the fix.</p>
+      <p class="use"><b>When:</b> Constantly. One vulnerability class per week.</p>
+      <a href="https://owasp.org/www-project-top-ten/" target="_blank">owasp.org Top 10 →</a>
+      <a href="https://portswigger.net/web-security" style="margin-left:10px" target="_blank">PortSwigger free labs →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 3 ================= -->
+<section id="p3">
+  <h2><span class="num">P3</span> Phase 3 — Exploitation & Password Attacks <span style="font-size:.5em;color:var(--muted)">(Week 20–32)</span></h2>
+  <p class="phase-sub">You have a shell. Now what? Understanding exploits, cracking credentials, and moving through lab machines like a real pentester.</p>
+  <div class="phase-goal"><b>Goal:</b> Use Metasploit competently, crack hashes you legally captured, and read/understand public exploit code.</div>
+  <div class="grid" id="grid3">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">MS</span><img src="https://cdn.simpleicons.org/metasploit/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Metasploit Framework <span class="tag free">FREE</span></div><div class="tool-cat">Exploitation framework</div></div></div>
+      <p>Thousands of ready exploits + post-exploitation modules in one console. Learn it properly — search, exploit selection, payload choice (bind/reverse), meterpreter — because "metasploitable" alone doesn't make you a pentester.</p>
+      <p class="use"><b>When:</b> Lab machines and authorized engagements. Understand what the module does BEFORE running it.</p>
+      <pre>msfconsole
+search type:exploit vsftpd
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 10.10.10.5 && run</pre>
+      <a href="https://www.metasploit.com" target="_blank">metasploit.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">ED</span></div>
+        <div><div class="tool-name">Exploit-DB / searchsploit <span class="tag free">FREE</span></div><div class="tool-cat">Public exploit database</div></div></div>
+      <p>Offline-searchable archive of 50,000+ public exploits. The workflow of a real pentester: Nmap finds vsftpd 2.3.4 → searchsploit vsftpd → read the exploit → understand → run (in lab).</p>
+      <p class="use"><b>When:</b> Every time a scan shows old software. Reading the code is the education.</p>
+      <pre>searchsploit apache 2.4
+searchsploit -m 40974.py   # copy exploit locally</pre>
+      <a href="https://www.exploit-db.com" target="_blank">exploit-db.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">JR</span></div>
+        <div><div class="tool-name">John the Ripper <span class="tag free">FREE</span></div><div class="tool-cat">Password cracking</div></div></div>
+      <p>Cracks password hashes offline with wordlists and mangling rules. First learn hash identification (MD5 vs SHA vs NTLM), then cracking. /etc/shadow hashes from your OWN lab only.</p>
+      <p class="use"><b>When:</b> You captured hashes from your lab machine (unshadow → john).</p>
+      <pre>unshadow passwd.txt shadow.txt > hashes.txt
+john hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">HC</span><img src="https://cdn.simpleicons.org/hashcat/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">hashcat <span class="tag free">FREE</span></div><div class="tool-cat">GPU password cracking</div></div></div>
+      <p>GPU-accelerated cracking — hundreds of times faster than John on capable hardware. Learn the -m hash-type flag, attack modes (dictionary, mask, rule), and benchmarking.</p>
+      <p class="use"><b>When:</b> Large hash lists in lab/CTF; understanding real-world crack speeds.</p>
+      <pre>hashcat -m 1000 ntlm.txt rockyou.txt
+hashcat -m 0 hash.txt -a 3 ?u?l?l?l?d?d?d?d  # mask attack</pre>
+      <a href="https://hashcat.net/hashcat/" target="_blank">hashcat.net →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">HY</span></div>
+        <div><div class="tool-name">Hydra <span class="tag free">FREE</span></div><div class="tool-cat">Online brute-forcing</div></div></div>
+      <p>Attacks live login services (SSH, FTP, web forms) with wordlists. Because it touches a live service, it's slower, noisy — and ONLY for your own lab. Understand why rate-limiting defeats it (that's the defensive lesson).</p>
+      <p class="use"><b>When:</b> Lab boxes with login services. Never against anything you don't own.</p>
+      <pre>hydra -l admin -P rockyou.txt 10.10.10.5 ssh
+hydra -l admin -P rockyou.txt 10.10.10.5 http-post-form "/login:user=^USER^&pass=^PASS^:incorrect"</pre>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">MK</span></div>
+        <div><div class="tool-name">Mimikatz <span class="tag free">FREE</span></div><div class="tool-cat">Windows credential extraction (concept)</div></div></div>
+      <p>The tool that changed Windows security: extracts plaintext passwords and Kerberos tickets from memory. You'll meet it in AD labs and every Windows security course. Know what it does and how defenders detect it.</p>
+      <p class="use"><b>When:</b> Windows lab privilege escalation — understanding, not just running.</p>
+      <pre>privilege::debug
+sekurlsa::logonpasswords   # lab domain only</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 4 ================= -->
+<section id="p4">
+  <h2><span class="num">P4</span> Phase 4 — Privilege Escalation & Active Directory <span style="font-size:.5em;color:var(--muted)">(Week 32–48)</span></h2>
+  <p class="phase-sub">The difference between a script kiddie and a professional: what you do AFTER the first shell. And where enterprise hacking really happens — Active Directory.</p>
+  <div class="phase-goal"><b>Goal:</b> Escalate from a normal user to root/ SYSTEM on lab machines, and attack a home-built AD lab.</div>
+  <div class="grid" id="grid4">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">PE</span></div>
+        <div><div class="tool-name">LinPEAS / WinPEAS <span class="tag free">FREE</span></div><div class="tool-cat">Privilege escalation enumeration</div></div></div>
+      <p>Automates the hunt for privilege escalation paths: SUID binaries, writable paths, stored credentials, services. Run it, then manually verify every "red" finding — that's how you learn the actual techniques.</p>
+      <p class="use"><b>When:</b> First 5 minutes after getting a lab shell.</p>
+      <pre># On target (lab):
+./linpeas.sh
+./winPEASx64.exe</pre>
+      <a href="https://github.com/peass-ng/PEASS-ng" target="_blank">github →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">GT</span></div>
+        <div><div class="tool-name">GTFOBins / LOLBAS <span class="tag free">FREE</span></div><div class="tool-cat">Abusable binaries database</div></div></div>
+      <p>Encyclopedias of ordinary Linux/Windows programs that can be abused to escalate or execute (sudo vim, SUID find...). Pair with your PEAS output: it tells you WHY something is dangerous.</p>
+      <p class="use"><b>When:</b> Every privesc hunt — look up every finding here.</p>
+      <a href="https://gtfobins.github.io" target="_blank">gtfobins.github.io →</a>
+      <a href="https://lolbas-project.github.io" style="margin-left:10px" target="_blank">lolbas-project →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">BH</span></div>
+        <div><div class="tool-name">BloodHound <span class="tag free">FREE</span></div><div class="tool-cat">Active Directory attack paths</div></div></div>
+      <p>Maps an AD domain as a graph and shows hidden attack paths: "this user → that group → Domain Admin". The defining tool of modern internal pentesting. Build a home AD lab (2 VMs: 1 Server, 1 client) to practice legally.</p>
+      <p class="use"><b>When:</b> AD labs (TryHackMe "Attacktive Directory", HTB Forest/Sauna).</p>
+      <pre>SharpHound.exe -c All
+# then import .zip into BloodHound GUI, use prebuilt queries</pre>
+      <a href="https://github.com/BloodHoundAD/BloodHound" target="_blank">github →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">IM</span></div>
+        <div><div class="tool-name">Impacket suite <span class="tag free">FREE</span></div><div class="tool-cat">Windows protocol toolkit</div></div></div>
+      <p>Python libraries for Windows protocols: SMB, MSSQL, Kerberos. psexec.py (remote execution), secretsdump.py (credential dumping), GetUserNP.py (AS-REP roast). The AD pentester's daily driver.</p>
+      <p class="use"><b>When:</b> AD labs — after you have credentials or a foothold.</p>
+      <pre>impacket-psexec user:pass@10.10.10.5
+impacket-secretsdump user:pass@10.10.10.5
+impacket-GetNPUsers domain/ -no-pass -usersfile users.txt</pre>
+      <a href="https://github.com/fortra/impacket" target="_blank">github →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">CH</span></div>
+        <div><div class="tool-name">Chisel <span class="tag free">FREE</span></div><div class="tool-cat">Tunneling & pivoting</div></div></div>
+      <p>Creates tunnels through a compromised lab machine so you can reach networks behind it — the "what's next" after exploiting a DMZ host. Understanding pivoting separates box-solvers from pentesters.</p>
+      <p class="use"><b>When:</b> Multi-machine lab networks (HTB Pro Labs, THM Wandering amit).</p>
+      <pre># attacker: chisel server -p 8000 --reverse
+# target:  ./chisel client 10.10.14.2:8000 R:socks</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 5 ================= -->
+<section id="p5">
+  <h2><span class="num">P5</span> Phase 5 — Wireless, Mobile & API <span style="font-size:.5em;color:var(--muted)">(Elective, Week 48+)</span></h2>
+  <p class="phase-sub">Specializations. Pick the one your local market wants — mobile security is booming in India.</p>
+  <div class="phase-goal"><b>Goal:</b> One specialization practiced deeply — not all three shallowly.</div>
+  <div class="grid" id="grid5">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">AC</span></div>
+        <div><div class="tool-name">Aircrack-ng <span class="tag free">FREE</span></div><div class="tool-cat">WiFi security testing</div></div></div>
+      <p>Cracks WEP/WPA handshakes captured from YOUR OWN test router. Teaches you exactly why WPA2's 4-way handshake can be attacked and why WPA3 matters. Requires an external WiFi adapter (monitor mode).</p>
+      <p class="use"><b>When:</b> Your own home router lab ONLY — testing others' WiFi is a crime in India (Sec. 66).</p>
+      <pre>airmon-ng start wlan0
+airodump-ng wlan0mon          # see your own network
+aircrack-ng capture.cap -w rockyou.txt</pre>
+      <a href="https://www.aircrack-ng.org" target="_blank">aircrack-ng.org →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">MF</span></div>
+        <div><div class="tool-name">MobSF <span class="tag free">FREE</span></div><div class="tool-cat">Mobile app security scanner</div></div></div>
+      <p>Automated static + dynamic analysis of Android/iOS apps: hard-coded keys, insecure storage, weak TLS. The entry point to mobile pentesting — most Indian companies have an app that needs exactly this.</p>
+      <p class="use"><b>When:</b> Analyzing apps you own/developed, bug bounty mobile scopes, or your own app before release.</p>
+      <pre>mobsfscan app.apk      # CLI
+# or run MobSF docker and upload APK in web UI</pre>
+      <a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank">github →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">AJ</span></div>
+        <div><div class="tool-name">apktool + jadx <span class="tag free">FREE</span></div><div class="tool-cat">Android reversing</div></div></div>
+      <p>apktool unpacks an APK into readable resources; jadx decompiles the DEX code back to Java. Together you can read almost any (authorized) Android app's logic and find secrets.</p>
+      <p class="use"><b>When:</b> Mobile bug bounty: hardcoded API keys, hidden endpoints, broken checks.</p>
+      <pre>apktool d app.apk -o out/
+jadx-gui app.apj   # or: jadx app.apk -d out/</pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHASE 6 ================= -->
+<section id="p6">
+  <h2><span class="num">P6</span> Phase 6 — Practice, Reporting & Career <span style="font-size:.5em;color:var(--muted)">(Ongoing)</span></h2>
+  <p class="phase-sub">Skills without proof get you nothing. Platforms for legal practice, then turning findings into professional reports.</p>
+  <div class="phase-goal"><b>Goal:</b> Consistent practice rhythm + a portfolio of writeups + report-writing skill.</div>
+  <div class="grid" id="grid6">
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">TH</span><img src="https://cdn.simpleicons.org/tryhackme/3fb950" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">TryHackMe <span class="tag free">FREE tier</span></div><div class="tool-cat">Guided learning platform</div></div></div>
+      <p>The best structured start: guided rooms, browser-based machines, clear paths (Pre-Security → Complete Beginner → Jr Penetration Tester). Learn here before HackTheBox.</p>
+      <p class="use"><b>When:</b> Day 1 of your journey. 1-2 rooms daily beats a weekend binge.</p>
+      <a href="https://tryhackme.com" target="_blank">tryhackme.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">HB</span><img src="https://cdn.simpleicons.org/hackthebox/3fb950" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">HackTheBox <span class="tag free">FREE tier</span></div><div class="tool-cat">Realistic practice lab</div></div></div>
+      <p>Harder, more realistic machines than THM — closer to real pentest targets. Graduate here after ~2-3 months of TryHackMe. Retired boxes with writeups are a goldmine.</p>
+      <p class="use"><b>When:</b> After THM beginner paths. Start with "Starting Point" machines.</p>
+      <a href="https://www.hackthebox.com" target="_blank">hackthebox.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">VH</span></div>
+        <div><div class="tool-name">VulnHub <span class="tag free">FREE</span></div><div class="tool-cat">Offline vulnerable VMs</div></div></div>
+      <p>Downloadable boot2root VMs for fully offline practice — no internet, no subscription. Great for a low-data setup and for practicing the full kill chain locally.</p>
+      <p class="use"><b>When:</b> You want to own the whole machine locally (Kioptrix is the classic first box).</p>
+      <a href="https://www.vulnhub.com" target="_blank">vulnhub.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">H1</span><img src="https://cdn.simpleicons.org/hackerone/58a6ff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">HackerOne <span class="tag free">FREE</span></div><div class="tool-cat">Bug bounty platform</div></div></div>
+      <p>Real companies, real programs, real money — 100% legal because the company authorizes testing in its published scope. Read scope FIRST, every time. Reports teach you what pros find.</p>
+      <p class="use"><b>When:</b> After ~6 months of solid practice. Start with wide-scope VDP programs (no bounty, less competition).</p>
+      <a href="https://hackerone.com" target="_blank">hackerone.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">BC</span><img src="https://cdn.simpleicons.org/bugcrowd/bc8cff" alt="" onerror="this.remove()"></div>
+        <div><div class="tool-name">Bugcrowd <span class="tag free">FREE</span></div><div class="tool-cat">Bug bounty platform</div></div></div>
+      <p>The other major platform — many companies run programs here instead of H1. Same rules: scope discipline, quality reports, no automated scanners unless allowed.</p>
+      <p class="use"><b>When:</b> Same stage as HackerOne — check both for good-fit programs.</p>
+      <a href="https://www.bugcrowd.com" target="_blank">bugcrowd.com →</a>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head"><div class="icon"><span class="mono">CV</span></div>
+        <div><div class="tool-name">CVSS Calculator <span class="tag free">FREE</span></div><div class="tool-cat">Vulnerability scoring</div></div></div>
+      <p>Every finding in a professional report gets a CVSS score (0-10) — severity, exploitability, impact. Clients and triage teams think in CVSS. Learn to score your findings yourself.</p>
+      <p class="use"><b>When:</b> Writing every practice report — score + justify each finding.</p>
+      <a href="https://www.first.org/cvss/calculator/4.0" target="_blank">FIRST CVSS calculator →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= GOV GUIDELINES ================= -->
+<section id="gov">
+  <h2><span class="num">⚖</span> Government Guidelines & the Law (India)</h2>
+  <p class="phase-sub">Ethical hacking is legal in India — WITH authorization. Know exactly where the line is.</p>
+
+  <div class="law-card">
+    <h3>1. Information Technology Act, 2000 — the sections that matter</h3>
+    <p>India's core cyber law. The parts every student must know:</p>
+    <p style="margin-left:20px"><b>Section 43:</b> Penalty for unauthorized access, damage, or downloading data from someone else's computer — civil liability, compensation up to ₹1 crore.</p>
+    <p style="margin-left:20px"><b>Section 66:</b> The criminal version — "dishonestly or fraudulently" doing what Sec. 43 covers means imprisonment up to 3 years and/or fine up to ₹5 lakh. "I was just testing" is NOT a defense without authorization.</p>
+    <p style="margin-left:20px"><b>Section 66C:</b> Identity theft (using someone's digital identity) — up to 3 years.</p>
+    <p style="margin-left:20px"><b>Section 66D:</b> Cheating by personation online (fake profiles, phishing for fraud) — up to 3 years.</p>
+    <p style="margin-left:20px"><b>Section 66F:</b> Cyber terrorism — life imprisonment. Never, ever touch critical infrastructure.</p>
+    <p style="margin-left:20px"><b>Section 70:</b> Protected systems — government/CII computers are off-limits, period.</p>
+    <p style="margin-left:20px"><b>Section 72:</b> Breach of confidentiality/privacy — publishing someone's private data.</p>
+  </div>
+
+  <div class="law-card">
+    <h3>2. CERT-In Directions, 2022 (MeitY) — for professionals</h3>
+    <p>These apply to organizations you'll audit, so know them for interviews and compliance work:</p>
+    <p style="margin-left:20px"><b>6-hour rule:</b> Report specified cyber incidents to CERT-In within 6 hours of noticing.</p>
+    <p style="margin-left:20px"><b>Log retention:</b> Systems must keep logs for 180 days within India.</p>
+    <p style="margin-left:20px"><b>Time sync:</b> Systems must use NICSPL/NPL time servers.</p>
+    <p>As a pentester you'll often be hired BECAUSE of compliance: RBI mandates periodic VA/PT for banks and payment systems, SEBI for market infrastructure. Compliance work = jobs.</p>
+  </div>
+
+  <div class="law-card">
+    <h3>3. DPDP Act, 2023 — data protection basics</h3>
+    <p>India's data protection law (analogous to GDPR). Two angles for you:</p>
+    <p style="margin-left:20px"><b>As a learner:</b> Never store or share real personal data you encounter while testing — even in a lab report.</p>
+    <p style="margin-left:20px"><b>As a professional:</b> Pentest reports themselves contain personal data; secure handling is part of the job.</p>
+  </div>
+
+  <div class="law-card">
+    <h3>4. If you become a victim (or witness one)</h3>
+    <p style="margin-left:20px"><b>Report:</b> National Cyber Crime Reporting Portal — <a href="https://cybercrime.gov.in" style="color:var(--blue)">cybercrime.gov.in</a> (also handles cybercrime against women/children on priority)</p>
+    <p style="margin-left:20px"><b>Helpline:</b> 1930 (financial cyber fraud — call immediately to freeze funds)</p>
+    <p style="margin-left:20px"><b>CERT-In:</b> <a href="https://www.cert-in.org.in" style="color:var(--blue)">cert-in.org.in</a> — incident reporting for organizations</p>
+    <p style="margin-left:20px"><b>Free govt learning:</b> ISEA (Information Security Education & Awareness) — <a href="https://isea.gov.in" style="color:var(--blue)">isea.gov.in</a>; NIELIT courses — <a href="https://www.nielit.gov.in" style="color:var(--blue)">nielit.gov.in</a></p>
+  </div>
+
+  <div class="law-card">
+    <h3>5. The safe practice checklist (memorize this)</h3>
+    <p><b>Legal:</b> your own lab VMs • CTF platforms (THM/HTB/VulnHub) • published bug bounty scope • written client authorization (get-out clause: "client name, dates, IP ranges, allowed techniques").</p>
+    <p><b>Illegal, always:</b> scanning random public IPs • testing your college/office network without written permission • "checking security" of a website you don't own • brute-forcing any real account.</p>
+  </div>
+</section>
+
+<!-- ================= CERTS ================= -->
+<section id="certs">
+  <h2><span class="num">★</span> Certification Path (in order)</h2>
+  <table>
+    <tr><th>#</th><th>Certification</th><th>Why / When</th><th>Level</th></tr>
+    <tr><td>1</td><td>eJPT (INE Security)</td><td>First practical cert — proves you can actually run a basic pentest. Take after Phase 3.</td><td>Entry</td></tr>
+    <tr><td>2</td><td>CompTIA Security+</td><td>HR filter + defense fundamentals. Do it alongside Phase 2-3.</td><td>Entry</td></tr>
+    <tr><td>3</td><td>CEH (EC-Council)</td><td>Theory + recognized brand in India's job market. Do it before OSCP if you need the paper.</td><td>Mid</td></tr>
+    <tr><td>4</td><td>OSCP (OffSec)</td><td>The gold standard — 24-hour practical exam. Aim for this after Phase 4. It changes your career.</td><td>Pro</td></tr>
+  </table>
+  <p class="note">Also worth knowing: CEH Practical, CompTIA PenTest+, CRTP (AD-focused, cheaper than OSCP for AD skills).</p>
+</section>
+
+<!-- ================= 12 WEEK PLAN ================= -->
+<section id="plan">
+  <h2><span class="num">✓</span> 12-Week Starter Plan (first 3 months)</h2>
+  <table>
+    <tr><th>Week</th><th>Focus</th><th>Deliverable (proof of learning)</th></tr>
+    <tr><td>1-2</td><td>Kali + terminal + lab setup</td><td>Screenshot of your lab running, 20 terminal commands used from memory</td></tr>
+    <tr><td>3-4</td><td>Networking + Wireshark</td><td>Explain TCP handshake from your own capture, in writing</td></tr>
+    <tr><td>5-6</td><td>Nmap + recon</td><td>Nmap your own lab VM, write a 1-page "findings" summary</td></tr>
+    <tr><td>7-8</td><td>Linux privesc basics</td><td>Root 3 THM Linux boxes, write 3 writeups on GitHub</td></tr>
+    <tr><td>9-10</td><td>Web: Burp + OWASP Top 10</td><td>Solve 10 PortSwigger labs, note each in your repo</td></tr>
+    <tr><td>11</td><td>Password attacks</td><td>Crack your own lab hashes with John + hashcat, document</td></tr>
+    <tr><td>12</td><td>First "boot2root" + report</td><td>Full machine + a mini CVSS-scored report — your first portfolio piece</td></tr>
+  </table>
+  <p class="note">1-2 hours daily beats 10 hours on Sunday. Consistency is the whole trick.</p>
+</section>
+
+<div class="legal" style="margin-top:35px">
+  🎓 <b>Final word for students:</b> Every professional hacker you admire spent years in legal labs before touching a real engagement. The discipline to stay in scope is the #1 skill employers test. Build the habit now, in week 1.
+</div>
+
+</div>
+
+<footer>
+  Ethical Hacking Roadmap — free educational resource by a learner, for learners.<br>
+Tool logos via Simple Icons (respective trademarks belong to owners). Site hosted on GitHub Pages.<br>
+Always verify laws with official sources: <a href="https://www.india.gov.in" target="_blank">india.gov.in</a> | <a href="https://www.meity.gov.in" target="_blank">meity.gov.in</a> | <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a><br>
+⚠️ For education purposes only. Authorized testing only.
+</footer>
+
+<script>
+function filterTools(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.tool').forEach(function(t) {
+    var txt = t.textContent.toLowerCase();
+    t.style.display = (!q || txt.indexOf(q) !== -1) ? '' : 'none';
+  });
+  document.querySelectorAll('.grid').forEach(function(g) {
+    var visible = Array.prototype.filter.call(g.children, function(c){ return c.style.display !== 'none'; });
+    var sec = g.closest('section');
+    if (sec) sec.style.display = visible.length ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
