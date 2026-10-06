@@ -1,6 +1,6 @@
-# Ethical Hacking Learning Roadmap (Education Purpose Only)
+> 🌐 **Live Site:** https://3000-6abf7660583273a9ba9f76a7--b-1a3120d-43e1afc5a116eb3c.imported.base44-preview.app
 
-🌐 **Live Site:** https://3000-6abf7660583273a9ba9f76a7--b-1a3120d-43e1afc5a116eb3c.imported.base44-preview.app
+# Ethical Hacking Learning Roadmap (Education Purpose Only)
 
 > **Legal Warning:** Use everything in this repository ONLY on your own lab machines, CTF platforms (TryHackMe, HackTheBox), or programs with written permission (HackerOne, Bugcrowd). Testing systems without authorization is a criminal offence under India's IT Act 2000 (Sections 43 and 66) and similar laws worldwide.
 
