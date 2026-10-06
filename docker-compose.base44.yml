@@ -5,7 +5,7 @@
 services:
   web:
     image: nginx:alpine
-    restart: on-failure
+    restart: always
     ports:
       - "3000:80"
     volumes:
