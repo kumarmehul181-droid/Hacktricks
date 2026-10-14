@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Hacktricks" />
     <meta
       name="description"
-      content="Hacktricks — a professional curriculum-driven ethical-hacking roadmap: learn networking, Linux, web security, exploitation, privilege escalation, and reporting in lab environments."
+      content="Hacktricks — complete single-page curriculum for ethical hacking: hardware, tools, labs, cheatsheets, and contributor templates."
     />
-    <meta name="keywords" content="ethical hacking, cybersecurity, roadmap, pentesting, lab, cheatsheets" />
-    <title>Hacktricks | Ethical Hacking Roadmap</title>
-
+    <title>Hacktricks — All-in-One Learning Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-
   <body>
     <div class="canvas-bg" aria-hidden="true"></div>
 
@@ -33,252 +27,358 @@
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#about">About</a>
           <a href="#curriculum">Curriculum</a>
-          <a href="#resources">Resources</a>
+          <a href="#hardware">Hardware</a>
+          <a href="#tools">Tools</a>
+          <a href="#labs">Labs</a>
+          <a href="#cheatsheet">Cheatsheet</a>
+          <a href="#contribute">Contribute</a>
           <a href="#legal">Legal</a>
-          <a href="#repo">Repo</a>
         </nav>
 
         <div class="right-actions">
-          <a
-            class="button button-primary"
-            href="https://github.com/kumarmehul181-droid/Hacktricks"
-            target="_blank"
-            rel="noreferrer"
-            >Open Repo</a
-          >
+          <a class="button button-primary" href="https://github.com/kumarmehul181-droid/Hacktricks" target="_blank" rel="noreferrer">Open Repo</a>
           <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero professional-hero" aria-labelledby="hero-title">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <span class="eyebrow">Professional Curriculum • Ethical Hacking</span>
-            <h1 id="hero-title">Hacktricks — A Practical, Curriculum-driven Roadmap</h1>
-            <p class="lead">
-              Follow an instructor-style curriculum that takes you from ground-level fundamentals to professional
-              penetration testing — with labs, cheat sheets, and writeups to document your learning.
-            </p>
+            <span class="eyebrow">All-in-one Curriculum • Ethical Hacking</span>
+            <h1 id="hero-title">Hacktricks — Learn Ethical Hacking (Hardware, Tools, Labs)</h1>
+            <p class="lead">This single-page guide includes hardware references (Raspberry Pi, Flipper Zero, SDRs), a tools catalog, lab lessons, cheatsheets and a contributor template so any student can follow a complete learning path in one place.</p>
 
             <div class="hero-actions">
-              <a class="button button-primary" href="#curriculum">Start Beginner Path</a>
-              <a class="button button-secondary" href="#resources">Open Resources</a>
+              <a class="button button-primary" href="#curriculum">Start Learning</a>
+              <a class="button button-secondary" href="#cheatsheet">Quick Cheatsheet</a>
             </div>
 
-            <ul class="hero-meta" aria-label="Repository highlights">
-              <li><strong>Levels:</strong> 3</li>
-              <li><strong>Focus:</strong> Lab-first & evidence-based</li>
-              <li><strong>Output:</strong> Writeups & portfolio</li>
+            <ul class="hero-meta" aria-label="Highlights">
+              <li><strong>Levels:</strong> Foundations → Core → Professional</li>
+              <li><strong>Mode:</strong> Lab-first, evidence-based</li>
+              <li><strong>Includes:</strong> Hardware, SDR, Flipper, Pi, tools, labs</li>
             </ul>
 
             <div class="stats-row" aria-hidden="false">
-              <div class="stat">
-                <div class="stat-number">0–3m</div>
-                <div class="stat-label">Foundations</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">3–9m</div>
-                <div class="stat-label">Core Skills</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">9+m</div>
-                <div class="stat-label">Professional</div>
-              </div>
+              <div class="stat"><div class="stat-number">0–3m</div><div class="stat-label">Foundations</div></div>
+              <div class="stat"><div class="stat-number">3–9m</div><div class="stat-label">Core Skills</div></div>
+              <div class="stat"><div class="stat-number">9+m</div><div class="stat-label">Professional</div></div>
             </div>
           </div>
 
           <aside class="hero-panel panel-educator" aria-labelledby="panel-title">
             <div class="panel-card">
-              <p class="panel-label">Course outcomes</p>
+              <p class="panel-label">What you'll learn</p>
               <ol id="panel-title">
-                <li>Understand networking and Linux fundamentals</li>
-                <li>Perform safe reconnaissance and web testing</li>
-                <li>Execute lab exploitation and privilege escalation</li>
-                <li>Document findings professionally with CVSS</li>
+                <li>Networking & Linux fundamentals</li>
+                <li>Reconnaissance & web testing</li>
+                <li>Exploitation, privilege escalation & AD concepts</li>
+                <li>Hardware security, SDR, and embedded devices</li>
               </ol>
-              <p class="small">Estimated timeline: 6–12 months at a steady pace</p>
+              <p class="small">Output: writeups, portfolio, and a final pentest-style report.</p>
               <img src="assets/roadmap.svg" alt="Learning roadmap diagram" class="roadmap-image" />
             </div>
           </aside>
         </div>
       </section>
 
+      <!-- ABOUT -->
       <section id="about" class="section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">About this curriculum</span>
-            <h2>Instructor-style learning, structured for practical progress</h2>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-card">
-              <div class="icon-wrap" aria-hidden="true">1</div>
-              <h3>Lesson-based approach</h3>
-              <p>
-                Each topic is a learning unit: objectives, tools, lab exercises, and a short assessment (writeup).
-                Follow units sequentially or pick specialization modules after Level 2.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon-wrap" aria-hidden="true">2</div>
-              <h3>Lab-first methodology</h3>
-              <p>
-                Every technique includes a lab recommendation. Use isolated VMs (VirtualBox / VMware) and vulnerable
-                targets for hands-on practice.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon-wrap" aria-hidden="true">3</div>
-              <h3>Professional output</h3>
-              <p>
-                Produce writeups after each lab. Learn to present findings with evidence, risk rating, and remediation
-                guidance — the skills employers and clients expect.
-              </p>
-            </article>
-          </div>
+          <div class="section-heading"><span class="eyebrow accent">About</span><h2>Single-repo, student-friendly learning</h2></div>
+          <p class="repo-copy">Hacktricks is a single, comprehensive page designed for students. Everything needed to learn ethical hacking — hardware, software tools, labs and writeup templates — is consolidated here for clarity and easy navigation.</p>
         </div>
       </section>
 
+      <!-- CURRICULUM -->
       <section id="curriculum" class="section alt-section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Curriculum</span>
-            <h2>Structured learning stages & unit contents</h2>
-          </div>
+          <div class="section-heading"><span class="eyebrow accent">Curriculum</span><h2>Roadmap & Units</h2></div>
 
           <div class="curriculum-grid">
             <article class="stage-card">
               <h3>Level 1 — Foundations (0–3 months)</h3>
               <ul>
-                <li>Networking basics (TCP/IP, ports, DNS, ARP)</li>
-                <li>Linux fundamentals and shell scripting</li>
-                <li>Lab setup and VM isolation</li>
-                <li>Essential tools: Wireshark, Nmap, basic Bash</li>
-                <li>Deliverable: 2 short writeups (lab + reflection)</li>
+                <li>Networking: TCP/IP, ports, DNS, ARP</li>
+                <li>Linux: filesystem, permissions, bash</li>
+                <li>Lab setup: VirtualBox, Kali, isolated networks</li>
+                <li>Basic tools: nmap, tcpdump, Wireshark</li>
+                <li>Deliverable: 2 writeups</li>
               </ul>
             </article>
 
             <article class="stage-card">
-              <h3>Level 2 — Core Offensive Skills (3–9 months)</h3>
+              <h3>Level 2 — Core Skills (3–9 months)</h3>
               <ul>
-                <li>Reconnaissance: nmap, subdomain enumeration, OSINT</li>
-                <li>Web app security (OWASP Top 10): manual testing + Burp</li>
-                <li>Password attacks and exploit basics (lab-only)</li>
-                <li>Automation: Python/Bash scripting for tooling</li>
-                <li>Deliverable: 4–6 writeups and a mini-project</li>
+                <li>Reconnaissance, subdomain enumeration</li>
+                <li>Web testing: OWASP Top 10, Burp Suite</li>
+                <li>Scripting: Python automation</li>
+                <li>Deliverable: 4–6 writeups + mini-project</li>
               </ul>
             </article>
 
             <article class="stage-card">
-              <h3>Level 3 — Professional Practice (9+ months)</h3>
+              <h3>Level 3 — Professional (9+ months)</h3>
               <ul>
-                <li>Privilege escalation (Linux & Windows)</li>
-                <li>Active Directory fundamentals and attack paths</li>
-                <li>Post-exploitation, pivoting, and persistence concepts</li>
+                <li>Privilege escalation and AD fundamentals</li>
+                <li>Post-exploitation and pivoting</li>
                 <li>Reporting: CVSS, remediation, executive summary</li>
                 <li>Deliverable: comprehensive pentest-style report</li>
               </ul>
             </article>
           </div>
-
-          <div class="curriculum-cta">
-            <a class="button button-primary" href="#resources">Open Curriculum Resources</a>
-            <a class="button button-secondary" href="#repo">Clone the Repo</a>
-          </div>
         </div>
       </section>
 
-      <section id="resources" class="section">
+      <!-- HARDWARE -->
+      <section id="hardware" class="section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Resources</span>
-            <h2>Cheatsheets, labs, tools & recommended reading</h2>
+          <div class="section-heading"><span class="eyebrow accent">Hardware</span><h2>Devices & how to use them (lab-only)</h2></div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Raspberry Pi</h3>
+              <p><strong>Use:</strong> low-cost lab server, host vulnerable apps, VPN jump-hosts, IoT testbeds.</p>
+              <p><strong>Models:</strong> Pi 4 (4GB+), Pi Zero W.</p>
+              <p><strong>Projects:</strong> host DVWA, Juice Shop; run static CTF VM; local DNS server.</p>
+              <p><strong>Safety:</strong> keep on isolated VM networks; never expose to production internet.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Flipper Zero</h3>
+              <p><strong>Use:</strong> multi-protocol gadget for IR, RFID, NFC, GPIO experimentation in lab.</p>
+              <p><strong>Example labs:</strong> read/write a lab RFID tag, IR replay for lab devices.</p>
+              <p><strong>Legal:</strong> Sub-GHz transmissions and cloning may be regulated — use only on owned devices.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>RTL-SDR & HackRF</h3>
+              <p><strong>RTL-SDR:</strong> RX-only inexpensive dongle for passive radio capture (FM, ADS-B).</p>
+              <p><strong>HackRF One:</strong> TX/RX capable — only use with authorization in shielded labs.</p>
+              <p><strong>Tools:</strong> Gqrx, CubicSDR, dump1090 for ADS-B.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Proxmark3 & NFC tools</h3>
+              <p>Low-level RFID research: cloning & analysis in controlled lab with owned tags.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>YubiKey & Hardware tokens</h3>
+              <p>Practice MFA, U2F, and hardware-backed authentication flows for secure setups.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>USB Rubber Ducky & WiFi Pineapple</h3>
+              <p><strong>Rubber Ducky:</strong> HID injection test device (lab-only). <strong>WiFi Pineapple:</strong> wireless auditing appliance (lab-only).</p>
+            </article>
           </div>
+
+          <div style="margin-top:18px;" class="small">Budget tip: start with Raspberry Pi + RTL-SDR; add Flipper Zero when comfortable.</div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section id="tools" class="section alt-section">
+        <div class="container">
+          <div class="section-heading"><span class="eyebrow accent">Tools</span><h2>Catalog — what, why, and quick commands</h2></div>
 
           <div class="resource-grid">
             <div class="resource-card">
-              <h3>Cheatsheets</h3>
-              <p>Quick command references for Linux, Nmap, Burp, and common workflows.</p>
-              <a href="cheatsheets/cheatsheet.md" class="link">Open cheatsheet</a>
+              <h3>nmap</h3>
+              <p>Network discovery and service detection.</p>
+              <pre class="terminal">nmap -sC -sV -p- 10.0.2.15</pre>
             </div>
 
             <div class="resource-card">
-              <h3>Tools & Scripts</h3>
-              <p>Small Python and Bash utilities to automate repetitive lab tasks.</p>
-              <a href="tools/" class="link">View tools</a>
+              <h3>Wireshark / tcpdump</h3>
+              <p>Packet capture and analysis.</p>
+              <pre class="terminal">tcpdump -i eth0 -w capture.pcap</pre>
             </div>
 
             <div class="resource-card">
-              <h3>Writeups & Portfolio</h3>
-              <p>Documented lab writeups to track progress and build a portfolio.</p>
-              <a href="writeups/" class="link">Open writeups</a>
+              <h3>Burp Suite</h3>
+              <p>Manual web application testing: intercept, repeater, intruder.</p>
             </div>
 
             <div class="resource-card">
-              <h3>External learning</h3>
-              <p>Recommended platforms: TryHackMe, HackTheBox, VulnHub, OWASP resources.</p>
-              <a href="https://tryhackme.com" class="link" target="_blank" rel="noreferrer">TryHackMe</a>
+              <h3>sqlmap</h3>
+              <p>Automated SQL injection testing (lab-only).</p>
+              <pre class="terminal">sqlmap -u "http://10.0.2.15/vuln.php?id=1" --batch</pre>
+            </div>
+
+            <div class="resource-card">
+              <h3>Metasploit</h3>
+              <p>Exploitation framework (use as learning tool).</p>
+            </div>
+
+            <div class="resource-card">
+              <h3>LinPEAS / WinPEAS</h3>
+              <p>Privilege escalation enumeration scripts.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;" class="small">Note: Always document commands and outputs in writeups. Never run tools outside authorized lab environments.</div>
+        </div>
+      </section>
+
+      <!-- LABS -->
+      <section id="labs" class="section">
+        <div class="container">
+          <div class="section-heading"><span class="eyebrow accent">Labs</span><h2>Unit plans & sample exercises</h2></div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Unit 0 — Lab setup</h3>
+              <p><strong>Objectives:</strong> Install Kali, create host-only network, snapshot VMs.</p>
+              <p><strong>Exercise:</strong> Deploy DVWA on a target VM, verify attacker can reach it.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Unit 1 — Recon & Networking</h3>
+              <p>Use nmap to discover services and Wireshark to capture HTTP.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Unit 2 — Web testing</h3>
+              <p>Use Burp to find XSS or SQLi vulnerabilities; document reproduction and remediation.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Unit 3 — Exploitation & scripting</h3>
+              <p>Run a public exploit in lab or write a Python automation script for recon.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Unit 4 — Privilege Escalation</h3>
+              <p>Run LinPEAS and enumerate misconfigurations to obtain local privilege escalation.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Unit 5 — Hardware mini-project</h3>
+              <p>Use Raspberry Pi to host a test service; use Flipper Zero to safely interact with a lab-owned tag.</p>
+            </article>
+          </div>
+
+          <div style="margin-top:18px;">
+            <h4>Writeup template (copy into writeups/)</h4>
+            <pre class="terminal"># &lt;Lab name&gt;
+Author: &lt;Name&gt;  
+Date: &lt;YYYY-MM-DD&gt;  
+
+## Objective
+
+## Lab setup
+
+## Steps
+
+## PoC
+
+## Root cause
+
+## Remediation
+
+## Notes</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHEATSHEET -->
+      <section id="cheatsheet" class="section alt-section">
+        <div class="container">
+          <div class="section-heading"><span class="eyebrow accent">Cheatsheet</span><h2>Essential commands & quick notes</h2></div>
+
+          <div class="resource-grid">
+            <div class="resource-card">
+              <h3>Linux essentials</h3>
+              <pre class="terminal">whoami
+id
+pwd
+ls -la
+find / -name "file" 2>/dev/null
+</pre>
+            </div>
+
+            <div class="resource-card">
+              <h3>Nmap quick</h3>
+              <pre class="terminal">nmap -sC -sV -p- 10.0.2.15</pre>
+            </div>
+
+            <div class="resource-card">
+              <h3>tcpdump</h3>
+              <pre class="terminal">tcpdump -i eth0 -w capture.pcap port 80</pre>
+            </div>
+
+            <div class="resource-card">
+              <h3>Burp + sqlmap</h3>
+              <pre class="terminal">(Use Burp to intercept)  
+sqlmap -u "http://10.0.2.15/vuln.php?id=1" --batch</pre>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- CONTRIBUTE -->
+      <section id="contribute" class="section">
+        <div class="container">
+          <div class="section-heading"><span class="eyebrow accent">Contribute</span><h2>Writeups & lesson submissions</h2></div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Writeup structure</h3>
+              <p>Place writeups under <code>writeups/&lt;level/&gt;&lt;machine-name&gt;</code>. Use the template shown in the Labs section. Ensure safety and do not disclose sensitive info.</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>How to propose changes</h3>
+              <p>Fork, create a branch, add your files, and open a PR. Title example: "Add Level 2 - XSS lab writeup".</p>
+            </article>
+
+            <article class="feature-card">
+              <h3>Review criteria</h3>
+              <p>Clarity, safety (lab-only), and educational value — explain why the issue exists and how to fix it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEGAL -->
       <section id="legal" class="section alt-section">
         <div class="container narrow">
-          <div class="section-heading">
-            <span class="eyebrow accent">Legal & safety</span>
-            <h2>Principles and rules for safe practice</h2>
-          </div>
-
+          <div class="section-heading"><span class="eyebrow accent">Legal & Safety</span><h2>Rules you must follow</h2></div>
           <div class="legal-box">
             <ol>
-              <li>Only test systems you own or have explicit written permission to assess.</li>
-              <li>Use isolated labs (Host-only or internal network) and avoid production networks.</li>
-              <li>Keep evidence and logs—document steps and outputs for reporting.</li>
-              <li>Follow responsible disclosure practices when working with third-party programs.</li>
+              <li>Use only on machines you own or have explicit written permission to test.</li>
+              <li>Isolate lab networks from home/work networks (Host-only/NAT).</li>
+              <li>Do not transmit on radio bands without license; use SDRs passively unless authorized.</li>
+              <li>Keep logs, evidence, and writeups for every test.</li>
             </ol>
           </div>
         </div>
       </section>
 
-      <section id="repo" class="section">
+      <!-- FOOTER / REPO -->
+      <section class="section">
         <div class="container repo-grid">
           <div>
             <span class="eyebrow accent">Repository</span>
-            <h2>Hacktricks — Curriculum & learning materials</h2>
-            <p class="repo-copy">
-              This repository provides a curriculum-driven approach to learning ethical hacking: structured units,
-              lab recommendations, cheatsheets, and writeups to help you grow from a beginner to a professional mindset.
-            </p>
-
-            <h4>Get started (quick)</h4>
+            <h2>Hacktricks — One-page learning hub</h2>
+            <p class="repo-copy">Clone the repo and follow the units. Add writeups to /writeups and share PRs for review.</p>
             <pre class="terminal">git clone https://github.com/kumarmehul181-droid/Hacktricks.git
 cd Hacktricks
 cat README.md</pre>
           </div>
 
           <div class="repo-actions">
-            <a
-              class="button button-primary"
-              href="https://github.com/kumarmehul181-droid/Hacktricks"
-              target="_blank"
-              rel="noreferrer"
-              >View on GitHub</a
-            >
-            <a
-              class="button button-secondary"
-              href="https://github.com/kumarmehul181-droid/Hacktricks/blob/main/README.md"
-              target="_blank"
-              rel="noreferrer"
-              >Read README</a
-            >
+            <a class="button button-primary" href="https://github.com/kumarmehul181-droid/Hacktricks" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="button button-secondary" href="https://github.com/kumarmehul181-droid/Hacktricks/blob/main/README.md" target="_blank" rel="noreferrer">Read README</a>
           </div>
         </div>
       </section>
+
     </main>
 
     <footer class="site-footer" role="contentinfo">
