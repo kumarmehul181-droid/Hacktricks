@@ -1,48 +1,102 @@
-# Ethical Hacking Learning Roadmap (Education Purpose Only)
+# Ethical Hacking Learning Roadmap
 
 ![Hacktricks Logo](assets/logo.svg)
 
-> **Legal Warning:** Use everything in this repository ONLY on your own lab machines, CTF platforms (TryHackMe, HackTheBox), or programs with written permission (HackerOne, Bugcrowd). Testing systems without explicit permission is illegal.
+> Legal Warning: This repository is for educational purposes only. Use all content only in your own lab environment, on authorized CTF platforms, or in bug bounty programs with explicit written permission. Do not test systems without authorization.
 
-This repository is a curated, practical learning hub for ethical hacking and penetration testing. It contains a structured roadmap (beginner → intermediate → pro), cheatsheets, tools, and writeups to help you learn safely and effectively.
+Hacktricks is a structured cybersecurity learning repository designed to help beginners and intermediate learners understand ethical hacking in a safe, legal, and practical way. It combines a guided roadmap, notes, cheat sheets, writing exercises, and tooling references into a single learning hub.
+
+## Why this repository exists
+
+This project is meant to help students move from basic cybersecurity theory to hands-on practice. Instead of jumping straight into exploitation, the repository builds a clear path:
+
+- Fundamentals first: networking, Linux, and security basics
+- Lab setup second: virtual machines and isolated environments
+- Practice third: recon, vulnerability testing, and exploitation concepts
+- Professional skills last: reporting, documentation, and responsible security work
+
+## Repository overview
+
+| Area | Purpose | Examples |
+|---|---|---|
+| `README.md` | Main roadmap and learning guide | Beginner → intermediate → advanced path |
+| `index.html` | Front-end landing page for browsing the repo | Static site overview |
+| `cheatsheets/` | Quick references and command notes | Nmap, Linux, Burp, reconnaissance |
+| `tools/` | Scripts and custom utilities | Python/Bash tools for lab tasks |
+| `writeups/` | Writeups and case studies | CTFs, machines, lab notes |
+| `assets/` | Visuals, diagrams, and branding | Logo, diagrams, illustrations |
+
+## Learning path
+
+![Learning Roadmap](assets/roadmap.svg)
+
+### Level 1 — Beginner (0–3 months)
+
+Focus on the foundations:
+
+- Networking fundamentals: TCP/IP, OSI model, ports, protocols
+- Linux basics: file system, permissions, shell usage, scripting
+- Lab setup: Kali Linux, vulnerable VMs, isolated networks
+- Essential tools: Wireshark, Nmap, Bash basics
+- Practice: beginner CTFs and guided labs
+
+### Level 2 — Intermediate (3–9 months)
+
+Focus on technical offensive security skills:
+
+- Reconnaissance: DNS, subdomain enumeration, OSINT, discovery
+- Web application attacks: SQLi, XSS, IDOR, SSRF, CSRF
+- Password and authentication attacks: concepts and safe lab testing
+- Exploitation basics: Metasploit, payloads, payload delivery concepts
+- Automation: Python and Bash scripting for tasks and scanners
+
+### Level 3 — Professional (9+ months)
+
+Focus on advanced pentesting and real-world security work:
+
+- Privilege escalation: Linux/Windows techniques
+- Active Directory: Kerberos, trusts, privilege chains
+- Post-exploitation: pivoting, persistence, forensic awareness
+- API and mobile security: application testing workflows
+- Reporting: CVSS, evidence, remediation, executive summaries
+- Bug bounty and professional practice: scope awareness and responsible disclosure
+
+## Quick start
+
+1. Start with this README and follow the roadmap in order.
+2. Build a safe lab environment using isolated virtual machines.
+3. Study the cheat sheets for commands and quick references.
+4. Practice in controlled environments only.
+5. Write a writeup for every machine or challenge you complete.
+
+## Safe usage rules
+
+1. Use only on your own machines, authorized labs, or permitted CTF platforms.
+2. Never attack systems without explicit permission.
+3. Keep your lab isolated from production networks.
+4. Understand what you are doing before running any command or exploit.
+5. Learn to document findings and explain root causes clearly.
+
+## Recommended repository structure
+
+```text
+Hacktricks/
+├── README.md
+├── index.html
+├── assets/
+│   ├── logo.svg
+│   └── roadmap.svg
+├── cheatsheets/
+│   └── cheatsheet.md
+├── tools/
+├── writeups/
+└── LICENSE (if added later)
+```
+
+## Summary
+
+This repository is best understood as a cybersecurity learning archive and structured roadmap. It is not just a collection of commands or tools; it is a full educational path for understanding ethical hacking responsibly, documenting lessons, and building hands-on skills in a controlled and safe environment.
 
 ---
 
-## Visual roadmap (quick overview)
-
-The following diagram shows the progression from ground-level fundamentals (Level 1) through core offensive skills (Level 2) to professional pentesting capabilities (Level 3).
-
-![Roadmap diagram](assets/roadmap.svg)
-
----
-
-## At-a-glance table
-
-| Level | Timeframe | Core focus | Typical topics / deliverables |
-|---|---:|---|---|
-| Level 1 — Beginner | 0–3 months | Fundamentals / Lab setup | Networking basics, Linux commands, lab VMs, Wireshark, basic Nmap scans |
-| Level 2 — Intermediate | 3–9 months | Offensive techniques & tooling | Recon (nmap, subdomain enumeration), OWASP Top10, Burp Suite, exploitation basics, scripting (Python/Bash) |
-| Level 3 — Pro | 9+ months | Professional pentesting & reporting | Privilege escalation, AD attacks, post-exploitation, mobile/API testing, reporting & CVSS |
-
----
-
-## How to use this repo (ground-level, step-by-step)
-
-1. Clone the repo: `git clone https://github.com/kumarmehul181-droid/Hacktricks.git`
-2. Start at the README/learning-roadmap and pick a Level to follow sequentially.
-3. Set up your lab: install Kali (attacker) and one or more vulnerable targets (Metasploitable, DVWA, Juice Shop). Keep the lab isolated (Host-only or NAT + internal networks).
-4. Follow the cheatsheets in `/cheatsheets` for quick commands and workflows. Add your own writeups to `/writeups` after solving machines.
-5. Use the `/tools` folder for scripts you build — name them and include a README describing how to use them.
-
----
-
-## What I added in this change
-
-- assets/logo.svg — lightweight SVG logo used in repo and site header
-- assets/roadmap.svg — simple visual diagram showing Levels 1 → 2 → 3
-- cheatsheets/cheatsheet.md — quick reference table for commands and tools (see /cheatsheets)
-- This README updated to include the visuals and a summary table for ground-level clarity
-
----
-
-If you want: I can also update `index.html` to embed the same logo/diagram, generate PNG versions of the SVGs for compatibility, or create a more detailed infographic (larger SVG) for printing/presentation. Tell me which of those you'd like next.
+© 2026 Hacktricks
