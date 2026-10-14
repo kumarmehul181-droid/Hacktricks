@@ -6,10 +6,11 @@
     <meta name="author" content="Hacktricks" />
     <meta
       name="description"
-      content="Hacktricks — an educational, professional ethical-hacking roadmap and curriculum. Learn networking, Linux, web security, exploitation, privilege escalation, and reporting in lab environments."
+      content="Hacktricks — a professional curriculum-driven ethical-hacking roadmap: learn networking, Linux, web security, exploitation, privilege escalation, and reporting in lab environments."
     />
     <meta name="keywords" content="ethical hacking, cybersecurity, roadmap, pentesting, lab, cheatsheets" />
     <title>Hacktricks | Ethical Hacking Roadmap</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,8 +19,11 @@
     />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
+
   <body>
-    <header class="site-header">
+    <div class="canvas-bg" aria-hidden="true"></div>
+
+    <header class="site-header" role="banner">
       <div class="container nav-wrap">
         <a href="#top" class="brand" aria-label="Hacktricks home">
           <img src="assets/logo.svg" alt="Hacktricks logo" class="brand-logo" />
@@ -34,50 +38,68 @@
           <a href="#repo">Repo</a>
         </nav>
 
-        <a
-          class="button button-primary"
-          href="https://github.com/kumarmehul181-droid/Hacktricks"
-          target="_blank"
-          rel="noreferrer"
-          >Open Repo</a
-        >
+        <div class="right-actions">
+          <a
+            class="button button-primary"
+            href="https://github.com/kumarmehul181-droid/Hacktricks"
+            target="_blank"
+            rel="noreferrer"
+            >Open Repo</a
+          >
+          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero professional-hero">
+      <section class="hero professional-hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
             <span class="eyebrow">Professional Curriculum • Ethical Hacking</span>
-            <h1>Hacktricks — A Practical, Curriculum-driven Roadmap</h1>
+            <h1 id="hero-title">Hacktricks — A Practical, Curriculum-driven Roadmap</h1>
             <p class="lead">
-              Follow a clear, instructor-style curriculum that takes you from ground
-              level fundamentals to professional penetration testing — with labs,
-              cheatsheets, and writeups to document your learning.
+              Follow an instructor-style curriculum that takes you from ground-level fundamentals to professional
+              penetration testing — with labs, cheat sheets, and writeups to document your learning.
             </p>
 
             <div class="hero-actions">
-              <a class="button button-primary" href="#curriculum">View Curriculum</a>
+              <a class="button button-primary" href="#curriculum">Start Beginner Path</a>
               <a class="button button-secondary" href="#resources">Open Resources</a>
             </div>
 
             <ul class="hero-meta" aria-label="Repository highlights">
-              <li><strong>Stages:</strong> 3 core levels</li>
-              <li><strong>Focus:</strong> Lab-first, evidence-based</li>
+              <li><strong>Levels:</strong> 3</li>
+              <li><strong>Focus:</strong> Lab-first & evidence-based</li>
               <li><strong>Output:</strong> Writeups & portfolio</li>
             </ul>
+
+            <div class="stats-row" aria-hidden="false">
+              <div class="stat">
+                <div class="stat-number">0–3m</div>
+                <div class="stat-label">Foundations</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">3–9m</div>
+                <div class="stat-label">Core Skills</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">9+m</div>
+                <div class="stat-label">Professional</div>
+              </div>
+            </div>
           </div>
 
-          <aside class="hero-panel panel-educator">
+          <aside class="hero-panel panel-educator" aria-labelledby="panel-title">
             <div class="panel-card">
               <p class="panel-label">Course outcomes</p>
-              <ol>
+              <ol id="panel-title">
                 <li>Understand networking and Linux fundamentals</li>
                 <li>Perform safe reconnaissance and web testing</li>
                 <li>Execute lab exploitation and privilege escalation</li>
                 <li>Document findings professionally with CVSS</li>
               </ol>
-              <p class="small">Estimated timeline: 6–12 months at regular pace</p>
+              <p class="small">Estimated timeline: 6–12 months at a steady pace</p>
+              <img src="assets/roadmap.svg" alt="Learning roadmap diagram" class="roadmap-image" />
             </div>
           </aside>
         </div>
@@ -92,32 +114,29 @@
 
           <div class="feature-grid">
             <article class="feature-card">
-              <div class="icon-wrap">1</div>
+              <div class="icon-wrap" aria-hidden="true">1</div>
               <h3>Lesson-based approach</h3>
               <p>
-                Each topic is presented as a learning unit: objectives, tools,
-                lab exercises, and a short assessment (writeup). Follow units in
-                sequence or pick specialization modules after Level 2.
+                Each topic is a learning unit: objectives, tools, lab exercises, and a short assessment (writeup).
+                Follow units sequentially or pick specialization modules after Level 2.
               </p>
             </article>
 
             <article class="feature-card">
-              <div class="icon-wrap">2</div>
+              <div class="icon-wrap" aria-hidden="true">2</div>
               <h3>Lab-first methodology</h3>
               <p>
-                Every technique includes a lab recommendation. Use isolated VMs
-                (VirtualBox / VMware) and vulnerable targets (Metasploitable,
-                DVWA, Juice Shop) for hands-on practice.
+                Every technique includes a lab recommendation. Use isolated VMs (VirtualBox / VMware) and vulnerable
+                targets for hands-on practice.
               </p>
             </article>
 
             <article class="feature-card">
-              <div class="icon-wrap">3</div>
+              <div class="icon-wrap" aria-hidden="true">3</div>
               <h3>Professional output</h3>
               <p>
-                Produce writeups after each lab. Learn to present findings with
-                evidence, risk rating, and remediation guidance — the skills
-                employers and clients expect.
+                Produce writeups after each lab. Learn to present findings with evidence, risk rating, and remediation
+                guidance — the skills employers and clients expect.
               </p>
             </article>
           </div>
@@ -148,7 +167,7 @@
               <ul>
                 <li>Reconnaissance: nmap, subdomain enumeration, OSINT</li>
                 <li>Web app security (OWASP Top 10): manual testing + Burp</li>
-                <li>Password attacks and exploit basics (safe, lab-only)</li>
+                <li>Password attacks and exploit basics (lab-only)</li>
                 <li>Automation: Python/Bash scripting for tooling</li>
                 <li>Deliverable: 4–6 writeups and a mini-project</li>
               </ul>
@@ -184,19 +203,19 @@
             <div class="resource-card">
               <h3>Cheatsheets</h3>
               <p>Quick command references for Linux, Nmap, Burp, and common workflows.</p>
-              <a href="/cheatsheets/cheatsheet.md" class="link">Open cheatsheet</a>
+              <a href="cheatsheets/cheatsheet.md" class="link">Open cheatsheet</a>
             </div>
 
             <div class="resource-card">
               <h3>Tools & Scripts</h3>
               <p>Small Python and Bash utilities to automate repetitive lab tasks.</p>
-              <a href="/tools/" class="link">View tools</a>
+              <a href="tools/" class="link">View tools</a>
             </div>
 
             <div class="resource-card">
               <h3>Writeups & Portfolio</h3>
               <p>Documented lab writeups to track progress and build a portfolio.</p>
-              <a href="/writeups/" class="link">Open writeups</a>
+              <a href="writeups/" class="link">Open writeups</a>
             </div>
 
             <div class="resource-card">
@@ -232,7 +251,8 @@
             <span class="eyebrow accent">Repository</span>
             <h2>Hacktricks — Curriculum & learning materials</h2>
             <p class="repo-copy">
-              This repository provides a curriculum-driven approach to learning ethical hacking: structured units, lab recommendations, cheatsheets, and writeups to help you grow from a beginner to a professional mindset.
+              This repository provides a curriculum-driven approach to learning ethical hacking: structured units,
+              lab recommendations, cheatsheets, and writeups to help you grow from a beginner to a professional mindset.
             </p>
 
             <h4>Get started (quick)</h4>
@@ -261,16 +281,13 @@ cat README.md</pre>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
       <div class="container footer-wrap">
         <p>© <span id="year"></span> Hacktricks</p>
         <p>Built for learning, labs, and responsible security practice.</p>
       </div>
     </footer>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
     <script src="assets/script.js"></script>
   </body>
 </html>
