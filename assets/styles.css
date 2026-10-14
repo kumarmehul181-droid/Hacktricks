@@ -32,6 +32,13 @@ body {
     linear-gradient(180deg, var(--bg) 0%, #0b1626 100%);
   color: var(--text);
   line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 a {
@@ -39,9 +46,26 @@ a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+button {
+  font: inherit;
+}
+
+.canvas-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(110, 218, 255, 0.12), transparent 25%),
+    radial-gradient(circle at 80% 25%, rgba(126, 242, 197, 0.1), transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(100, 210, 255, 0.08), transparent 20%);
+  z-index: 0;
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -79,15 +103,14 @@ img {
   font-size: 1.1rem;
 }
 
-.brand-mark {
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #061018;
-  font-weight: 800;
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.brand-name {
+  color: var(--text);
 }
 
 .main-nav {
@@ -105,6 +128,12 @@ img {
 .main-nav a:hover,
 .main-nav a:focus-visible {
   color: var(--text);
+}
+
+.right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .button {
@@ -135,6 +164,16 @@ img {
   color: var(--text);
 }
 
+.nav-toggle {
+  display: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-size: 1.25rem;
+}
+
 .hero {
   padding: 72px 0 50px;
 }
@@ -163,7 +202,10 @@ img {
 h1,
 h2,
 h3,
-p {
+p,
+ul,
+ol,
+pre {
   margin: 0 0 16px;
 }
 
@@ -216,6 +258,35 @@ h3 {
   border-radius: 999px;
 }
 
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+  max-width: 520px;
+}
+
+.stat {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.04em;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
 .hero-panel {
   display: flex;
   justify-content: center;
@@ -227,7 +298,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 26px 24px;
+  padding: 24px 20px;
 }
 
 .panel-label {
@@ -238,7 +309,7 @@ h3 {
   margin-bottom: 14px;
 }
 
-.panel-card ul {
+.panel-card ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -255,18 +326,20 @@ h3 {
   background: rgba(148, 163, 184, 0.03);
   border: 1px solid rgba(148, 163, 184, 0.08);
   color: var(--text);
+  list-style: decimal inside;
 }
 
-.panel-card li span {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: rgba(100, 210, 255, 0.08);
-  color: var(--primary);
-  font-size: 0.75rem;
-  font-weight: 700;
+.small {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.roadmap-image {
+  margin-top: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .section {
@@ -284,14 +357,28 @@ h3 {
 }
 
 .feature-grid,
-.tool-grid {
+.resource-grid,
+.curriculum-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 
+.feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resource-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.curriculum-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .feature-card,
-.tool-card {
+.tool-card,
+.resource-card,
+.stage-card {
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -300,8 +387,9 @@ h3 {
 }
 
 .feature-card p,
-.tool-card p,
-.repo-copy {
+.resource-card p,
+.repo-copy,
+.stage-card li {
   color: var(--muted);
 }
 
@@ -317,41 +405,27 @@ h3 {
   font-weight: 800;
 }
 
-.roadmap-list {
-  display: grid;
-  gap: 18px;
-}
-
-.roadmap-item {
-  display: grid;
-  grid-template-columns: 86px 1fr;
-  gap: 18px;
-  align-items: center;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px 20px;
-}
-
-.phase-number {
-  width: 62px;
-  height: 62px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  font-weight: 800;
-  background: rgba(100, 210, 255, 0.08);
-  border: 1px solid rgba(100, 210, 255, 0.28);
+.link {
   color: var(--primary);
+  font-weight: 700;
 }
 
-.roadmap-item h3 {
-  margin-bottom: 6px;
+.stage-card h3 {
+  margin-bottom: 10px;
 }
 
-.roadmap-item p {
+.stage-card ul {
   margin: 0;
-  color: var(--muted);
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.curriculum-cta {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .legal-box {
@@ -362,8 +436,11 @@ h3 {
   color: var(--text);
 }
 
-.legal-box p {
-  margin: 0 0 14px;
+.legal-box ol {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
   color: var(--muted);
 }
 
@@ -378,6 +455,16 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+}
+
+.terminal {
+  margin: 14px 0 0;
+  background: #06121a;
+  border: 1px solid var(--line);
+  color: #8ff7d8;
+  padding: 12px 14px;
+  border-radius: 12px;
+  overflow: auto;
 }
 
 .site-footer {
@@ -396,7 +483,8 @@ h3 {
 @media (max-width: 900px) {
   .hero-grid,
   .feature-grid,
-  .tool-grid,
+  .resource-grid,
+  .curriculum-grid,
   .repo-grid {
     grid-template-columns: 1fr;
     display: grid;
@@ -409,6 +497,25 @@ h3 {
   .main-nav {
     display: none;
   }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(7, 17, 29, 0.96);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -416,14 +523,19 @@ h3 {
     padding-top: 48px;
   }
 
+  .right-actions {
+    gap: 8px;
+  }
+
   .hero-actions,
   .repo-actions,
-  .footer-wrap {
+  .footer-wrap,
+  .curriculum-cta {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .roadmap-item {
+  .stats-row {
     grid-template-columns: 1fr;
   }
 }
