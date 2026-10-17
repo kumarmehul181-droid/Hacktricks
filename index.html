@@ -1,681 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Hacktricks — a practical ethical hacking learning roadmap for students, with real hardware photos, labs, tools, and safe practice guidance."
-    />
-    <meta property="og:title" content="Hacktricks | Ethical Hacking Learning Roadmap" />
-    <meta
-      property="og:description"
-      content="Learn Linux, networking, web security, exploitation, privilege escalation, and hardware security using real product examples like Raspberry Pi and Flipper Zero."
-    />
-    <meta
-      property="og:image"
-      content="https://upload.wikimedia.org/wikipedia/commons/8/8a/Raspberry_Pi_4_Model_B_-_Side.jpg"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Hacktricks | Ethical Hacking Learning Roadmap</title>
-    <style>
-      :root {
-        --bg: #07111d;
-        --bg-2: #0d1b2a;
-        --panel: rgba(16, 28, 45, 0.82);
-        --card: #0f172a;
-        --card-2: #111d2d;
-        --line: rgba(148, 163, 184, 0.18);
-        --text: #edf5ff;
-        --muted: #a7b6c9;
-        --primary: #72d6ff;
-        --accent: #89f3c6;
-        --warning: #f8d98b;
-        --danger: #ff8a8a;
-        --shadow: 0 18px 45px rgba(1, 6, 14, 0.38);
-        --radius: 20px;
-      }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hacktricks — Ethical Hacking Learning Hub</title>
+<meta name="description" content="Hacktricks: student-focused ethical hacking learning hub — 12-week roadmap, real tools with logos, cheatsheets, hands-on labs and a daily cybersecurity awareness quiz.">
+<link rel="icon" href="assets/logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: Inter, Arial, sans-serif;
-        background:
-          radial-gradient(circle at top, rgba(114, 214, 255, 0.16), transparent 35%),
-          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-        color: var(--text);
-        line-height: 1.7;
-      }
-      img { display: block; max-width: 100%; }
-      a { color: inherit; text-decoration: none; }
-      p, h1, h2, h3, ul, ol { margin-top: 0; }
+<nav><div class="wrap">
+  <a class="brand" href="#"><img src="assets/logo.svg" alt="Hacktricks logo"> HACK<span style="color:var(--cyan)">TRICKS</span></a>
+  <ul>
+    <li><a href="#quizzone">Quiz</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#cheatsheets">Cheatsheets</a></li>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#legal">Legal</a></li>
+  </ul>
+</div></nav>
 
-      .container {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
+<header><div class="wrap grid2">
+  <div>
+    <span class="chip" style="background:#13203a;border:1px solid var(--cyan)">For Students · India · Educational Only</span>
+    <h1>Learn Ethical Hacking the <span>Right Way</span></h1>
+    <p class="sub">Zero se hero tak — 12-week roadmap, real tools ke logos ke saath, ready-made cheatsheets, hands-on labs, aur roz ka cybersecurity awareness quiz. Sab kuch ek jagah, bilkul free.</p>
+    <div class="stats">
+      <div class="stat"><b>12</b><span>Weeks Roadmap</span></div>
+      <div class="stat"><b>14+</b><span>Tools Covered</span></div>
+      <div class="stat"><b>20</b><span>Awareness Qs</span></div>
+      <div class="stat"><b>4</b><span>Cheatsheets</span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#roadmap" class="btn btn-c">Roadmap dekho</a>
+      <a href="#quizzone" class="btn btn-o">Awareness Quiz lo</a>
+    </div>
+  </div>
+  <div>
+    <img src="assets/roadmap.svg" alt="Learning path diagram" style="border-radius:14px;border:1px solid var(--line)">
+    <div class="qotd" style="margin-top:18px;margin-bottom:0">
+      <span class="tag">QUESTION OF THE DAY — sabko ek sawaal</span>
+      <p id="qotd-q"></p>
+      <div class="opts" id="qotd-opts"></div>
+      <div class="why" id="qotd-why"></div>
+    </div>
+  </div>
+</div></header>
 
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        backdrop-filter: blur(12px);
-        background: rgba(7, 17, 29, 0.78);
-        border-bottom: 1px solid var(--line);
-      }
+<section id="quizzone"><div class="wrap">
+  <h2><i>🧠</i> Cybersecurity Awareness Quiz</h2>
+  <p class="lead">Har visitor ko ek question roz milta hai (upar Question of the Day). Full quiz 8 random sawaal lata hai — phishing, OTP scams, digital arrest, ransomware — sab real-world attacks jo India me chal rahe hain.</p>
+  <div class="quiz-box" id="quiz"></div>
+</div></section>
 
-      .nav-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 76px;
-        gap: 20px;
-      }
+<section id="roadmap"><div class="wrap">
+  <h2><i>🗺️</i> 12-Week Learning Roadmap</h2>
+  <p class="lead">Har phase kaafi hai uske liye jo serious hai — 3-4 ghante weekly, apne lab me.</p>
 
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-      }
-      .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #07111d;
-        font-weight: 900;
-      }
-      .brand-text { font-size: 1.08rem; }
+  <div class="phase"><div class="num">1</div><div>
+    <h3>Foundation: Linux + Networking <span class="dur">Week 1–2</span></h3>
+    <p>Kali Linux install, terminal commands, file permissions, IP/DNS/ports/protocols — networking samjhe bina hacker nahi bante.</p>
+    <div class="chips"><span class="chip">Linux</span><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">nmap basics</span><span class="chip">VMware/VirtualBox</span></div>
+  </div></div>
 
-      .main-nav {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        color: var(--muted);
-        font-size: 0.96rem;
-      }
-      .main-nav a:hover { color: var(--text); }
+  <div class="phase"><div class="num">2</div><div>
+    <h3>Recon & Scanning <span class="dur">Week 3–4</span></h3>
+    <p>Target ki jaankari legally collect karna — OSINT, port scanning, service enumeration (sirf apne/permission wale targets par).</p>
+    <div class="chips"><span class="chip">nmap</span><span class="chip">theHarvester</span><span class="chip">Shodan</span><span class="chip">Google Dorks</span><span class="chip">Maltego</span></div>
+  </div></div>
 
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        padding: 0.82rem 1.2rem;
-        border: 1px solid transparent;
-        font-weight: 700;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .button:hover { transform: translateY(-2px); }
-      .button-primary {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #07111d;
-        box-shadow: 0 14px 26px rgba(114, 214, 255, 0.25);
-      }
-      .button-secondary {
-        background: rgba(255, 255, 255, 0.015);
-        border-color: var(--line);
-        color: var(--text);
-      }
+  <div class="phase"><div class="num">3</div><div>
+    <h3>Web Application Security <span class="dur">Week 5–7</span></h3>
+    <p>OWASP Top 10 — SQL injection, XSS, broken access control. Burp Suite ke sahte proxy setup karke apne test app par practice.</p>
+    <div class="chips"><span class="chip">Burp Suite</span><span class="chip">OWASP ZAP</span><span class="chip">sqlmap</span><span class="chip">DVWA</span><span class="chip">bwapp</span></div>
+  </div></div>
 
-      .hero {
-        padding: 72px 0 42px;
-      }
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 32px;
-        align-items: center;
-      }
+  <div class="phase"><div class="num">4</div><div>
+    <h3>Exploitation & Privilege Escalation <span class="dur">Week 8–9</span></h3>
+    <p>Metasploitable lab me exploitation, phir Linux/Windows privilege escalation — LinPEAS/WinPEAS ke saath.</p>
+    <div class="chips"><span class="chip">Metasploit</span><span class="chip">Mimikatz</span><span class="chip">LinPEAS</span><span class="chip">GTFOBins</span></div>
+  </div></div>
 
-      .eyebrow {
-        display: inline-block;
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: var(--primary);
-      }
-      .eyebrow.accent { color: var(--accent); }
+  <div class="phase"><div class="num">5</div><div>
+    <h3>Passwords & Wireless <span class="dur">Week 10–11</span></h3>
+    <p>Password cracking (apne hash par), wireless security concepts — WEP/WPA2/WPA3 ka farak samjho.</p>
+    <div class="chips"><span class="chip">Hydra</span><span class="chip">Hashcat</span><span class="chip">John</span><span class="chip">Aircrack-ng</span></div>
+  </div></div>
 
-      h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        line-height: 1.02;
-        letter-spacing: -0.06em;
-        margin: 0 0 16px;
-      }
-      h2 {
-        font-size: clamp(2rem, 3vw, 3rem);
-        line-height: 1.1;
-        letter-spacing: -0.05em;
-        margin: 0 0 14px;
-      }
-      h3 {
-        font-size: 1.12rem;
-        letter-spacing: -0.03em;
-        margin: 0 0 10px;
-      }
+  <div class="phase"><div class="num">6</div><div>
+    <h3>CTF Practice + Career <span class="dur">Week 12+</span></h3>
+    <p>CTF platforms par flags dhoondo, writeups likho (template repo me hai), aur CEH → eJPT → OSCP ka certification path samjho.</p>
+    <div class="chips"><span class="chip">TryHackMe</span><span class="chip">HackTheBox</span><span class="chip">picoCTF</span><span class="chip">Writeups</span><span class="chip">CEH/eJPT</span></div>
+  </div></div>
+</div></section>
 
-      .lead {
-        max-width: 66ch;
-        color: var(--muted);
-      }
+<section id="tools"><div class="wrap">
+  <h2><i>🛠️</i> Tool Catalog — Real Logos Ke Saath</h2>
+  <p class="lead">14 essential tools, category-wise. Har card me kaam, key command aur official site.</p>
+  <div class="tools" id="toolgrid"></div>
 
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 22px;
-      }
+  <div class="tblwrap"><table>
+    <tr><th>Tool</th><th>Category</th><th>Level</th><th>Best For</th></tr>
+    <tr><td>Nmap</td><td class="m">Recon</td><td><span class="pill l1">Beginner</span></td><td class="m">Network & port scanning</td></tr>
+    <tr><td>Wireshark</td><td class="m">Analysis</td><td><span class="pill l1">Beginner</span></td><td class="m">Packet capture & analysis</td></tr>
+    <tr><td>Burp Suite</td><td class="m">Web</td><td><span class="pill l2">Intermediate</span></td><td class="m">Web app testing proxy</td></tr>
+    <tr><td>OWASP ZAP</td><td class="m">Web</td><td><span class="pill l1">Beginner</span></td><td class="m">Free web scanner</td></tr>
+    <tr><td>Metasploit</td><td class="m">Exploit</td><td><span class="pill l3">Advanced</span></td><td class="m">Exploitation framework (labs)</td></tr>
+    <tr><td>sqlmap</td><td class="m">Web/DB</td><td><span class="pill l2">Intermediate</span></td><td class="m">SQL injection testing</td></tr>
+    <tr><td>Hydra / Hashcat / John</td><td class="m">Password</td><td><span class="pill l2">Intermediate</span></td><td class="m">Password auditing (own systems)</td></tr>
+    <tr><td>Aircrack-ng</td><td class="m">Wireless</td><td><span class="pill l3">Advanced</span></td><td class="m">WiFi security auditing</td></tr>
+    <tr><td>Nikto</td><td class="m">Scanner</td><td><span class="pill l1">Beginner</span></td><td class="m">Web server misconfig scan</td></tr>
+    <tr><td>LinPEAS/WinPEAS</td><td class="m">Privesc</td><td><span class="pill l3">Advanced</span></td><td class="m">Privilege escalation enum</td></tr>
+    <tr><td>Ghidra</td><td class="m">Reverse Eng.</td><td><span class="pill l3">Advanced</span></td><td class="m">Binary analysis</td></tr>
+    <tr><td>Netcat</td><td class="m">Network</td><td><span class="pill l1">Beginner</span></td><td class="m">TCP/UDP Swiss-army knife</td></tr>
+  </table></div>
+</div></section>
 
-      .hero-meta {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 22px 0 0;
-        color: var(--muted);
-      }
-      .hero-meta li {
-        border: 1px solid var(--line);
-        background: rgba(148, 163, 184, 0.04);
-        border-radius: 999px;
-        padding: 0.55rem 0.85rem;
-        font-size: 0.9rem;
-      }
+<section id="cheatsheets"><div class="wrap">
+  <h2><i>📋</i> Cheatsheets</h2>
+  <p class="lead">Revision ke liye short command sheets — exam ya lab se pehle ek baar dekh lo.</p>
+  <div class="cards">
+    <div class="card"><h3>🔍 Nmap</h3><p>Scan types, service detection, NSE scripts, output flags.</p><a href="cheatsheets/nmap.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Kholo</a></div>
+    <div class="card"><h3>🕷️ Burp Suite</h3><p>Proxy setup, Repeater, Intruder, common workflows.</p><a href="cheatsheets/burp.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Kholo</a></div>
+    <div class="card"><h3>🐧 Linux Privesc</h3><p>SUID, cron jobs, GTFOBins, LinPEAS flow.</p><a href="cheatsheets/linux.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Kholo</a></div>
+    <div class="card"><h3>🪟 Windows Privesc</h3><p>Services, registry, tokens, WinPEAS flow.</p><a href="cheatsheets/windows.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Kholo</a></div>
+  </div>
+</div></section>
 
-      .stats-row {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        max-width: 440px;
-        margin-top: 24px;
-      }
-      .stat {
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: rgba(255,255,255,0.02);
-        padding: 14px 10px;
-        text-align: center;
-      }
-      .stat-number {
-        color: var(--primary);
-        font-weight: 800;
-        font-size: 1.3rem;
-      }
-      .stat-label {
-        color: var(--muted);
-        font-size: 0.75rem;
-        margin-top: 2px;
-      }
+<section id="labs"><div class="wrap">
+  <h2><i>💻</i> Hands-on Labs & Hardware</h2>
+  <p class="lead">Sirf padhna nahi — chalao. Ye chhote Python tools apne lab me test karo, aur hardware guide padho.</p>
+  <div class="cards">
+    <div class="card"><h3>🐍 Port Scanner (Python)</h3><p>Apne network par TCP port scan — sockets seekhne ka best tareeka.</p><a href="tools/port_scanner.py" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Code dekho</a></div>
+    <div class="card"><h3>🌐 Subdomain Finder</h3><p>Apne domain ki subdomains legally enumerate karo.</p><a href="tools/subdomain_finder.py" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Code dekho</a></div>
+    <div class="card"><h3>🔌 Hardware Toolkit</h3><p>WiFi adapters, rubber ducky, SDR — kya kaise, legal boundaries ke saath.</p><a href="tools/Advanced_Hardware_Tools.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Guide</a></div>
+    <div class="card"><h3>📝 Writeup Template</h3><p>CTF solve kiya? Template se likho — portfolio banega.</p><a href="writeups/writeup-template.md" class="btn btn-o" style="padding:8px 14px;font-size:.85rem">Template</a></div>
+  </div>
+</div></section>
 
-      .panel {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, rgba(16,28,45,0.95), rgba(10,18,28,0.9));
-        box-shadow: var(--shadow);
-        padding: 18px;
-      }
-      .panel-label {
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.72rem;
-        color: var(--muted);
-        margin-bottom: 10px;
-      }
-      .panel ol {
-        padding-left: 18px;
-        margin: 0 0 14px;
-      }
-      .panel li + li { margin-top: 8px; }
-      .panel-image {
-        width: 100%;
-        height: 230px;
-        object-fit: cover;
-        border-radius: 12px;
-        border: 1px solid var(--line);
-      }
+<section id="legal"><div class="wrap">
+  <h2><i>⚖️</i> Legal & Responsible Use</h2>
+  <p class="lead">Ethical hacking = permission ke andar. India me cyber law ko samajhna bhi skill hai.</p>
+  <div class="legal">
+    <h3>⚠️ Yaad Rakho (IT Act 2000 / BNS cyber sections):</h3>
+    <ul>
+      <li>Bina written permission kisi ka system/network test karna <b>criminal offence</b> hai — sirf apne systems, labs (TryHackMe/HTB/DVWA) aur CTF platforms par practice karo.</li>
+      <li>Computer source code, data, identity ka misuse — sab punishable hai (section 43/65/66 family).</li>
+      <li>Koi bhi crime/cyber harassment ho to complaint: <b>cybercrime.gov.in</b> · helpline <b>1930</b>.</li>
+      <li>Ye site sirf <b>education</b> ke liye hai — koi illegal activity ki support nahi.</li>
+    </ul>
+  </div>
+</div></section>
 
-      section { padding: 42px 0; }
-      .alt { background: rgba(148, 163, 184, 0.02); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+<footer><div class="wrap">
+  <p><b>HACKTRICKS</b> — Student-focused ethical hacking learning hub · Educational purpose only</p>
+  <p style="margin-top:6px;font-size:.78rem">Tools ke naam unke respective owners ke hain. Logos: Simple Icons (CDN). © 2026</p>
+</div></footer>
 
-      .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-      .grid-4 {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
-      }
-      .card {
-        background: rgba(18, 29, 43, 0.88);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 18px;
-        box-shadow: var(--shadow);
-      }
-      .card p, .card li { color: var(--muted); }
-      .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        border: 1px solid var(--line);
-      }
-      .card-qa {
-        margin-top: 12px;
-        padding-top: 10px;
-        border-top: 1px solid var(--line);
-      }
-      .card-qa strong {
-        color: var(--text);
-        display: block;
-        margin-bottom: 6px;
-      }
-      .card-qa p {
-        margin: 0;
-      }
-
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-      .step {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--line);
-        padding: 18px;
-        border-radius: var(--radius);
-      }
-      .step-number {
-        color: var(--primary);
-        font-size: 1.3rem;
-        font-weight: 800;
-        margin-bottom: 6px;
-      }
-
-      .legal-box {
-        background: rgba(248, 217, 139, 0.05);
-        border: 1px solid rgba(248, 217, 139, 0.22);
-        border-radius: var(--radius);
-        padding: 16px 18px;
-      }
-      .legal-box ol { margin: 0; padding-left: 20px; color: var(--muted); }
-
-      pre {
-        margin: 0;
-        background: #08171f;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 12px 14px;
-        overflow-x: auto;
-        color: #a7ffd7;
-        font-size: 0.86rem;
-      }
-
-      .repo-grid {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 20px;
-      }
-      .repo-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .site-footer {
-        border-top: 1px solid var(--line);
-        padding: 22px 0 28px;
-      }
-      .footer-wrap {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        color: var(--muted);
-        flex-wrap: wrap;
-      }
-
-      @media (max-width: 900px) {
-        .hero-grid, .grid-3, .grid-4, .timeline { grid-template-columns: 1fr; display: grid; }
-        .main-nav { display: none; }
-        .repo-grid { display: grid; }
-      }
-
-      @media (max-width: 560px) {
-        .hero { padding-top: 48px; }
-        .stats-row { grid-template-columns: 1fr; }
-        .hero-actions, .repo-actions, .footer-wrap { flex-direction: column; align-items: flex-start; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand" aria-label="Hacktricks home">
-          <span class="brand-mark">H</span>
-          <span class="brand-text">Hacktricks</span>
-        </a>
-
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#hardware">Hardware</a>
-          <a href="#tools">Tools</a>
-          <a href="#labs">Labs</a>
-          <a href="#legal">Legal</a>
-        </nav>
-
-        <a class="button button-primary" href="https://github.com/kumarmehul181-droid/Hacktricks" target="_blank" rel="noreferrer">Open Repo</a>
-      </div>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <span class="eyebrow">Student-first Ethical Hacking</span>
-            <h1>Learn ethical hacking with real tools, real hardware, and real practice.</h1>
-            <p class="lead">
-              This repository is designed for students who want to understand cybersecurity step by step — from Linux basics to web security, exploitation, privilege escalation, wireless work, and professional reporting. Everything here is structured to help you learn responsibly and safely in a lab environment.
-            </p>
-
-            <div class="hero-actions">
-              <a class="button button-primary" href="#roadmap">Explore roadmap</a>
-              <a class="button button-secondary" href="#hardware">See hardware</a>
-            </div>
-
-            <ul class="hero-meta" aria-label="Repository highlights">
-              <li>7 learning phases</li>
-              <li>40+ tools</li>
-              <li>Lab-first approach</li>
-            </ul>
-
-            <div class="stats-row">
-              <div class="stat">
-                <div class="stat-number">01</div>
-                <div class="stat-label">Lab setup</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">02</div>
-                <div class="stat-label">Networking</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">03</div>
-                <div class="stat-label">Pentest basics</div>
-              </div>
-            </div>
-          </div>
-
-          <aside class="panel" aria-label="Learning overview panel">
-            <div class="panel-label">What students learn</div>
-            <ol>
-              <li>Linux and networking fundamentals</li>
-              <li>Reconnaissance and web application testing</li>
-              <li>Exploitation and privilege escalation</li>
-              <li>Hardware security with Raspberry Pi and Flipper Zero</li>
-              <li>Professional reporting and lab documentation</li>
-            </ol>
-            <img
-              class="panel-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Raspberry_Pi_4_Model_B_-_Side.jpg"
-              alt="Raspberry Pi 4 model B product photo"
-            />
-          </aside>
-        </div>
-      </section>
-
-      <section id="about" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">About</span>
-            <h2>Built for consistent learning, not random tool hunting.</h2>
-          </div>
-          <p class="lead">
-            This repo helps students move from beginner fundamentals to professional-level security work without feeling lost. Each phase teaches a concept, a set of tools, and a way to practice safely. It is meant to support ethical hacking education with legal lab boundaries and responsible practice.
-          </p>
-        </div>
-      </section>
-
-      <section id="roadmap" class="section alt">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Roadmap</span>
-            <h2>Learning path</h2>
-          </div>
-
-          <div class="timeline">
-            <article class="step">
-              <div class="step-number">P0</div>
-              <h3>OS & Lab Setup</h3>
-              <p>Kali Linux, VirtualBox, Linux terminal basics, and authorized lab design.</p>
-            </article>
-            <article class="step">
-              <div class="step-number">P1</div>
-              <h3>Networking & Recon</h3>
-              <p>TCP/IP, DNS, Wireshark, Nmap, and attack surface discovery.</p>
-            </article>
-            <article class="step">
-              <div class="step-number">P2</div>
-              <h3>Web App Security</h3>
-              <p>OWASP Top 10, Burp Suite, SQLi, SSRF, IDOR, and app testing.</p>
-            </article>
-            <article class="step">
-              <div class="step-number">P3</div>
-              <h3>Exploitation</h3>
-              <p>Metasploit, public exploit flow, enumeration, and safe local exploitation labs.</p>
-            </article>
-            <article class="step">
-              <div class="step-number">P4</div>
-              <h3>Privilege Escalation</h3>
-              <p>Linux/Windows privilege escalation, Active Directory, BloodHound, and lateral movement.</p>
-            </article>
-            <article class="step">
-              <div class="step-number">P5</div>
-              <h3>Hardware & Wireless</h3>
-              <p>Raspberry Pi, Flipper Zero, SDR, Wi-Fi security, APIs, and mobile security basics.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="hardware" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Hardware</span>
-            <h2>Real products students should understand</h2>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Raspberry_Pi_4_Model_B_-_Side.jpg"
-                alt="Real Raspberry Pi 4 product photo"
-              />
-              <h3>Raspberry Pi</h3>
-              <p>
-                Raspberry Pi is a small single-board computer used for local labs, home servers, IoT projects, and embedded experiments. Students learn how to host services safely, understand Linux systems, and simulate environments without affecting production systems.
-              </p>
-              <div class="card-qa">
-                <strong>Student question:</strong>
-                <p>Why is Raspberry Pi useful for learning cybersecurity before using a real enterprise environment?</p>
-              </div>
-            </article>
-
-            <article class="card">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flipper_Zero.jpg"
-                alt="Real Flipper Zero product photo"
-              />
-              <h3>Flipper Zero</h3>
-              <p>
-                Flipper Zero is a multifunction hardware tool often used for RFID, NFC, infrared, and wireless experiments. It is a good example of how hardware can interface with the digital world, which is why students study device protocols, access control systems, and secure design.
-              </p>
-              <div class="card-qa">
-                <strong>Student question:</strong>
-                <p>How do hardware tools help students understand wireless and embedded-device security?</p>
-              </div>
-            </article>
-
-            <article class="card">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Flipper_Zero_infrared_and_ibutton.jpg"
-                alt="Flipper Zero infrared and iButton product image"
-              />
-              <h3>Flipper Zero Modules</h3>
-              <p>
-                The device supports multiple interaction modes such as IR and iButton. This helps students understand how reading, replaying, and analyzing protocol-based interactions work. It also demonstrates why security controls must be properly designed and authenticated.
-              </p>
-              <div class="card-qa">
-                <strong>Student question:</strong>
-                <p>What is the difference between understanding a protocol and exploiting it in a lab environment?</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="tools" class="section alt">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Tools</span>
-            <h2>Core tools students use regularly</h2>
-          </div>
-
-          <div class="grid-4">
-            <article class="card">
-              <h3>nmap</h3>
-              <p>Service discovery and network scanning.</p>
-              <pre>nmap -sC -sV 10.0.2.15</pre>
-            </article>
-            <article class="card">
-              <h3>Wireshark</h3>
-              <p>Packet analysis and protocol inspection.</p>
-              <pre>tcpdump -i eth0 -w capture.pcap</pre>
-            </article>
-            <article class="card">
-              <h3>Burp Suite</h3>
-              <p>Web app testing and traffic manipulation.</p>
-            </article>
-            <article class="card">
-              <h3>sqlmap</h3>
-              <p>Automated SQL injection testing.</p>
-              <pre>sqlmap -u "http://target/vuln.php?id=1" --batch</pre>
-            </article>
-            <article class="card">
-              <h3>Metasploit</h3>
-              <p>Exploit framework for safe lab learning.</p>
-            </article>
-            <article class="card">
-              <h3>LinPEAS</h3>
-              <p>Privilege escalation enumeration.</p>
-            </article>
-            <article class="card">
-              <h3>Hashcat</h3>
-              <p>Password hash analysis and lab practice.</p>
-            </article>
-            <article class="card">
-              <h3>BloodHound</h3>
-              <p>Active Directory path mapping and understanding roles.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="labs" class="section">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Labs</span>
-            <h2>How students practice</h2>
-          </div>
-
-          <div class="grid-3">
-            <article class="card">
-              <h3>Lab 1 — Linux & networking</h3>
-              <p>Install a VM, learn IP addressing, ports, packet captures, process management, and safe environment isolation.</p>
-            </article>
-            <article class="card">
-              <h3>Lab 2 — Web testing</h3>
-              <p>Learn HTTP requests, Burp inspection, OWASP issues, and how to record evidence responsibly.</p>
-            </article>
-            <article class="card">
-              <h3>Lab 3 — Exploitation</h3>
-              <p>Practice the vulnerability lifecycle: enumeration, exploitation, system control, and reporting without harming real systems.</p>
-            </article>
-            <article class="card">
-              <h3>Lab 4 — Privilege escalation</h3>
-              <p>Study sudo misconfigurations, SUID binaries, service permissions, and problem-solving under controlled conditions.</p>
-            </article>
-            <article class="card">
-              <h3>Lab 5 — Hardware & SDR</h3>
-              <p>Understand device communication, radio signals, embedded devices, and controlled hardware experiments.</p>
-            </article>
-            <article class="card">
-              <h3>Lab 6 — Reporting</h3>
-              <p>Create professional findings, evidence summaries, impact analysis, and mitigation steps for a security test.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="legal" class="section alt">
-        <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow accent">Legal</span>
-            <h2>Use it safely and responsibly.</h2>
-          </div>
-          <div class="legal-box">
-            <ol>
-              <li>Only test systems you own or have explicit written permission to assess.</li>
-              <li>Keep lab traffic fully isolated from real devices, networks, and production environments.</li>
-              <li>Do not perform wireless or hardware testing on unauthorized ranges or devices.</li>
-              <li>Document findings with evidence, risk analysis, and proper remediation guidance.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container repo-grid">
-          <div>
-            <span class="eyebrow accent">Repository</span>
-            <h2>Hacktricks</h2>
-            <p class="lead">
-              A practical learning repo for ethical hacking students who want a structured path, real-world hardware examples, and legal safe practice guidance in one place.
-            </p>
-            <pre>git clone https://github.com/kumarmehul181-droid/Hacktricks.git
-cd Hacktricks</pre>
-          </div>
-
-          <div class="repo-actions">
-            <a class="button button-primary" href="https://github.com/kumarmehul181-droid/Hacktricks" target="_blank" rel="noreferrer">View Repo</a>
-            <a class="button button-secondary" href="https://github.com/kumarmehul181-droid/Hacktricks/blob/main/README.md" target="_blank" rel="noreferrer">Read README</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <p>© <span id="year"></span> Hacktricks</p>
-        <p>Built for learning, labs, and responsible security practice.</p>
-      </div>
-    </footer>
-
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+<script>
+// tool data — real logos where available (Simple Icons CDN), custom SVGs for rest
+const TOOLS=[
+ {n:"Nmap",cat:"Recon",c:"c-recon",l:"l1",logo:'assets/icons/nmap.svg',d:"Network mapper — ports, services, OS detect.",cmd:"nmap -sV -sC -p- 192.168.1.10",u:"https://nmap.org"},
+ {n:"Wireshark",cat:"Analysis",c:"c-net",l:"l1",logo:"https://cdn.simpleicons.org/wireshark/22d3ee",d:"Packet capture & deep traffic analysis.",cmd:"capture → filter: tcp.port == 80",u:"https://wireshark.org"},
+ {n:"Burp Suite",cat:"Web",c:"c-web",l:"l2",logo:"https://cdn.simpleicons.org/burpsuite/22d3ee",d:"Web app testing ka proxy — OWASP Top 10 practice.",cmd:"proxy: 127.0.0.1:8080 → intercept on",u:"https://portswigger.net/burp"},
+ {n:"OWASP ZAP",cat:"Web",c:"c-web",l:"l1",logo:'assets/icons/zap.svg',d:"Free open-source web scanner, Burp ka beginner bhai.",cmd:"Active Scan → Alerts check",u:"https://zaproxy.org"},
+ {n:"Metasploit",cat:"Exploit",c:"c-exp",l:"l3",logo:"https://cdn.simpleicons.org/metasploit/22d3ee",d:"Exploitation framework — Metasploitable lab me use karo.",cmd:"msfconsole → search type:auxiliary scanner",u:"https://metasploit.com"},
+ {n:"Kali Linux",cat:"OS",c:"c-net",l:"l1",logo:"https://cdn.simpleicons.org/kalilinux/22d3ee",d:"300+ preloaded security tools wala distro — VM me chalao.",cmd:"sudo apt update && apt upgrade",u:"https://kali.org"},
+ {n:"sqlmap",cat:"Web/DB",c:"c-web",l:"l2",logo:'assets/icons/sqlmap.svg',d:"SQL injection testing — apne DVWA lab par.",cmd:"sqlmap -u URL --dbs --batch",u:"https://sqlmap.org"},
+ {n:"Hydra",cat:"Password",c:"c-pass",l:"l2",logo:'assets/icons/hydra.svg',d:"Login brute-force auditor — apne services par hi.",cmd:"hydra -l admin -P rock.txt ssh://127.0.0.1",u:"https://github.com/vanhauser-thc/thc-hydra"},
+ {n:"Hashcat",cat:"Password",c:"c-pass",l:"l2",logo:'assets/icons/hashcat.svg',d:"GPU password recovery — apne hash par audit.",cmd:"hashcat -m 0 hash.txt wordlist -r rule",u:"https://hashcat.net"},
+ {n:"Aircrack-ng",cat:"Wireless",c:"c-exp",l:"l3",logo:'assets/icons/aircrack.svg',d:"WiFi security auditing suite — apne AP par.",cmd:"airmon-ng start wlan0mon",u:"https://aircrack-ng.org"},
+ {n:"Nikto",cat:"Scanner",c:"c-recon",l:"l1",logo:'assets/icons/nikto.svg',d:"Web server misconfig & vulnerability scanner.",cmd:"nikto -h http://target",u:"https://cirt.net/Nikto2"},
+ {n:"LinPEAS",cat:"Privesc",c:"c-exp",l:"l3",logo:'assets/icons/peas.svg',d:"Linux privilege escalation enumeration script.",cmd:"linpeas.sh -a > report.txt",u:"https://github.com/peass-ng/PEASS-ng"},
+ {n:"Ghidra",cat:"Reverse Eng.",c:"c-fore",l:"l3",logo:'assets/icons/ghidra.svg',d:"NSA ka open-source reverse engineering tool.",cmd:"analyze binary → decompile",u:"https://ghidra-sre.org"},
+ {n:"Netcat",cat:"Network",c:"c-net",l:"l1",logo:'assets/icons/netcat.svg',d:"TCP/UDP ka swiss-army knife — banners, listeners.",cmd:"nc -lvnp 4444",u:"https://nmap.org/ncat"}
+];
+const CATLABEL={Recon:"RECON",Analysis:"ANALYSIS",Web:"WEB",Exploit:"EXPLOIT",OS:"OS","Web/DB":"WEB/DB",Password:"PASSWORD",Wireless:"WIRELESS",Scanner:"SCANNER",Privesc:"PRIVESC","Reverse Eng.":"REVERSE"};
+const LV={l1:"Beginner",l2:"Intermediate",l3:"Advanced"};
+document.getElementById('toolgrid').innerHTML=TOOLS.map(t=>`
+ <div class="tool"><div class="logo">${t.logo.startsWith('http')?`<img src="${t.logo}" alt="${t.n} logo">`:`<img src="${t.logo}" alt="${t.n} icon">`}</div>
+  <div style="min-width:0">
+   <h3>${t.n} <span class="cat ${t.c}">${CATLABEL[t.cat]}</span><span class="pill ${t.l}">${LV[t.l]}</span></h3>
+   <p>${t.d}</p><code>${t.cmd}</code>
+   <a href="${t.u}" target="_blank" rel="noreferrer">Official site ↗</a>
+  </div></div>`).join('');
+</script>
+<script src="assets/quiz.js"></script>
+</body>
 </html>
