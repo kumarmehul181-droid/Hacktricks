@@ -44,7 +44,7 @@ const QUESTIONS = [
   o:["Naya govt service hai","Scam: video call par 'police/TRAI' ban ke darao aur paise kaato — fake hai, paisa kabhi nahi transfer karo","Ek cybersecurity course hai","Mobile ka security feature hai"],a:1,
   why:"Real police kabhi video call par paisa verification nahi maangti. Call kaato, kisi ko mat batana, cybercrime.gov.in par complaint karo."},
  {q:"Same password sab jagah use karna kya risk hai?",
-  o:["Koi risk nahi","Ek site leak hui to sab accounts compromise — har jagah alag password rakho","Sirf social media ka risk hai","Email ka alag hone se bacha"},a:1,
+  o:["Koi risk nahi","Ek site leak hui to sab accounts compromise — har jagah alag password rakho","Sirf social media ka risk hai","Email ka alag hone se bacha"],a:1,
   why:"Credential stuffing: leak hua ek password, bot usse 100 sites par try karte hain. Unique password + manager = safe."},
  {q:"Deepfake video call me 'relative' paisa maang raha hai. Kya karoge?",
   o:["Paisa bhej do, video me hai na","Known number par khud call karke verify karo — deepfake ho sakta hai","Thoda paisa test me bhej do","Voicemail chhod do"],a:1,
